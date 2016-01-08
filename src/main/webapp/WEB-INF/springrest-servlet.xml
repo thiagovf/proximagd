@@ -11,6 +11,8 @@
 
 	<mvc:annotation-driven />
 	<mvc:resources mapping="/*.html" location="/static/" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/" />
 	<mvc:default-servlet-handler/>
 	<context:component-scan base-package="br.com.equipejr.controller" />
 	<bean
