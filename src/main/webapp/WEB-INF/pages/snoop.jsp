@@ -20,15 +20,15 @@
 							<b><font color="white">Login Form</font> </b>
 						</div>
 						<div class="panel-body">
-							<form action="#" method="post">
+							<form action="home" method="post">
 								<div class="form-group">
 									<label for="inputEmail1">E-mail</label> 
 									<input type="text" class="form-control" name="txtUserName"
-										id="txtUserName" placeholder="Digite seu e-mail"
+										id="inputEmail1" placeholder="Digite seu e-mail"
 										required="required">
 								</div>
 								<div class="form-group">
-									<label for="inputPassword1">Senha</label> <input
+									<label for="txtPass">Senha</label> <input
 										type="password" class="form-control" name="txtPass"
 										id="txtPass" placeholder="Senha" required="required">
 								</div>
