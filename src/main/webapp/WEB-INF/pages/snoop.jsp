@@ -7,23 +7,42 @@
 <link rel='stylesheet'
 	href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
 
-<TITLE>JBossEAP6.0 JSP snoop page</TITLE>
+<TITLE>Login</TITLE>
 </HEAD>
 <BODY>
-	<%="yahoo"%>
-	<H1>WebApp JSP Snoop page</H1>
-	<img src="static/images/jbosscorp_logo.png">
-	<h2>JVM Memory Monitor</h2>
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		<ul class="nav navbar-nav navbar-left">
-			<li class="hidden"><a href="#page-top"></a></li>
-			<li class="page-scroll"><a href="#portfolio">Portfolio</a></li>
-			<li class="page-scroll"><a href="#about">About</a></li>
-			<li class="page-scroll"><a href="#contact">Contact</a></li>
-		</ul>
+	<div class="container-fluid">
+		<div>
+			<jsp:include page="header.jsp" />
+			<div class="panel-body" align="center">
+				<div class="container " style="margin-top: 10%; margin-bottom: 10%;">
+					<div class="panel panel-success" style="max-width: 35%;" align="left">
+						<div class="panel-heading form-group">
+							<b><font color="white">Login Form</font> </b>
+						</div>
+						<div class="panel-body">
+							<form action="#" method="post">
+								<div class="form-group">
+									<label for="inputEmail1">E-mail</label> 
+									<input type="text" class="form-control" name="txtUserName"
+										id="txtUserName" placeholder="Digite seu e-mail"
+										required="required">
+								</div>
+								<div class="form-group">
+									<label for="inputPassword1">Senha</label> <input
+										type="password" class="form-control" name="txtPass"
+										id="txtPass" placeholder="Senha" required="required">
+								</div>
+								<button type="submit" style="width: 100%; font-size: 1.1em;"
+									class="btn btn-large btn btn-success btn-lg btn-block">
+									<b>Login</b>
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<jsp:include page="footer.jsp" />
+		</div>
 	</div>
-	<script type="text/javascript"
-		src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
 </BODY>
 </HTML>
