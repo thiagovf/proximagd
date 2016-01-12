@@ -11,7 +11,7 @@
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
-			<property name="hibernate.connection.url" value="jdbc:hsqldb:mem:dataSource" />
+			<property name="hibernate.connection.url" value="jdbc:hsqldb:hsql://localhost/pgrd" />
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
 
@@ -20,7 +20,7 @@
 			<property name="hibernate.showSql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 
 		</properties>
 	</persistence-unit>

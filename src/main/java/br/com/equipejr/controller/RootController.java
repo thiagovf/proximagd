@@ -14,18 +14,20 @@ import br.com.equipejr.entity.User;
 
 @Controller
 public class RootController {
+	EntityManagerFactory factory = Persistence.createEntityManagerFactory("equipePU");
+	EntityManager manager;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String root() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("equipePU");
 		User u = new User();
 		u.setName("yahoo");
 		u.setEmail("test");
-		EntityManager manager = factory.createEntityManager();
+		manager = factory.createEntityManager();
 		manager.getTransaction().begin();    
 		manager.persist(u);
 		manager.getTransaction().commit();  
-		factory.close();
-		manager.close();
+//		factory.close();
+//		manager.close();
 		return "snoop";
 	}
 	
@@ -34,9 +36,6 @@ public class RootController {
 			 @RequestParam(value="txtUserName", required=true) String email,
 			 @RequestParam(value="txtPass", required=true) String pass,
 			 ModelMap model) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("tarefas");
-		EntityManager manager = factory.createEntityManager();
-
 		User encontrada = manager.find(User.class, 1L);
 		User user = new User();
 		user.setEmail(email);
