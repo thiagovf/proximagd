@@ -8,6 +8,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<class>br.com.equipejr.entity.User</class>
+		<class>br.com.equipejr.entity.Box</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
