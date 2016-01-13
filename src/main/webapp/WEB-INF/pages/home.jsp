@@ -40,6 +40,7 @@
 							</div>
 							</c:otherwise>
 						</c:choose>
+						<c:if test="${not empty nextBeers}">
 						<div>
 						<h3>Suas próximas grades</h3>
 						</div>
@@ -76,6 +77,7 @@
 								</tbody>
 							</table>
 						</div>
+						</c:if>
 						<c:if test="${not empty allNextBeers}">
 						<div>
 						<h3>Grades a serem pagas</h3>
