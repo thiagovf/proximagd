@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,8 +26,17 @@ public class User {
 	@Column(nullable = false)
 	private String email;
 	
-	@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Box> boxes;
+	@Column(nullable = false)
+	private String password;
+	
+	@Column(nullable = false)
+	private boolean enabled;
+	
+	@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="payer")
+	private List<NextBeer> nextBeers;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	private Role role;
 	
 	public void setEmail(String email) {
 		this.email = email;
@@ -38,6 +48,10 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getName() {
+		return name;
 	}
 	
 }

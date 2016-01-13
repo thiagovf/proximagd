@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
 <HEAD>
@@ -16,8 +20,102 @@
 			<jsp:include page="header.jsp" />
 			<div class="panel-body" align="center">
 				<div class="container " style="margin-top: 10%; margin-bottom: 10%;">
-					Hello, <c:out value="${user.email}" />!
-					<br>
+					<sec:authorize
+						access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
+						<c:choose>
+							<c:when test="${hasBeersWithoutDate}">
+							<div>
+							"Um homem que não paga o que deve é um devedor." (autor desconhecido)
+								Pague a grade seu caba!
+							</div>
+							</c:when>
+							<c:when test="${hasBeersWithoutDate and not empty nextBeers}">
+							<div>
+							Opa, grade a vista!!
+							</div> 
+							</c:when>
+							<c:otherwise>
+							<div>
+							Você é um ótimo pagador. Estamos grato pelo seu empenho!
+							</div>
+							</c:otherwise>
+						</c:choose>
+						<div>
+						<h3>Suas próximas grades</h3>
+						</div>
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Devedor</th>
+										<th>Data do Registro</th>
+										<th>Motivo da Grade</th>
+										<th>Email</th>
+										<th>Previsão Pagamento</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+									<c:forEach items="${nextBeers}" var="nextBeer">
+										<td>${nextBeer.payer.name}</td>
+										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy" var="date" />
+										<td>${date}</td>
+										<td>${nextBeer.motivation}</td>
+										<td>${nextBeer.payer.email}</td>
+										<c:choose>
+											<c:when test="${not empty nextBeer.dateToPay}">
+												<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy" var="dateToPay" />
+												<td>${dateToPay}</td>
+											</c:when>
+											<c:otherwise>
+												<td>Pague a grade, cabrito!</td>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<c:if test="${not empty allNextBeers}">
+						<div>
+						<h3>Grades a serem pagas</h3>
+						</div>
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Devedor</th>
+										<th>Data do Registro</th>
+										<th>Motivo da Grade</th>
+										<th>Email</th>
+										<th>Previsão Pagamento</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+									<c:forEach items="${allNextBeers}" var="nextBeer">
+										<td>${nextBeer.payer.name}</td>
+										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy" var="date" />
+										<td>${date}</td>
+										<td>${nextBeer.motivation}</td>
+										<td>${nextBeer.payer.email}</td>
+										<c:choose>
+											<c:when test="${not empty nextBeer.dateToPay}">
+												<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy" var="dateToPay" />
+												<td>${dateToPay}</td>
+											</c:when>
+											<c:otherwise>
+												<td>Cobre o mancebo!</td>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						</c:if>
+						
+					</sec:authorize>
 				</div>
 			</div>
 			<jsp:include page="footer.jsp" />
