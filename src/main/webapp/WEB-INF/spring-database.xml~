@@ -13,6 +13,14 @@
 	</bean>-->
 	<bean id="dataSource_security_hsqldb"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
 		<property name="url" value="java:jboss/datasources/proximagrade" />
 	</bean>
+<<<<<<< HEAD
+	 <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
+        <property name="persistenceUnitName" value="equipePU"/>
+    </bean>
 </beans>
+=======
+</beans>
+>>>>>>> a845078b04af36caa9eef41b7c684a0f0c3bfc5e
