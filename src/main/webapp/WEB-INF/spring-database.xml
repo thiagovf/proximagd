@@ -19,4 +19,7 @@
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
+	 <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
+        <property name="persistenceUnitName" value="equipePU"/>
+    </bean>
 </beans>
