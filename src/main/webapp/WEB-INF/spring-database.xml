@@ -11,8 +11,15 @@
 		<property name="username" value="root" />
 		<property name="password" value="password" />
 	</bean>-->
-	<bean id="dataSource_security_hsqldb"
+	<!--<bean id="dataSource_security_hsqldb"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="url" value="java:jboss/datasources/proximagrade" />
+
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:hsql://localhost/pgrd" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+	</bean>-->
+	<bean id="dataSource_security_hsqldb" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/comp/env/jdbc/proximagrade" />
 	</bean>
 </beans>
