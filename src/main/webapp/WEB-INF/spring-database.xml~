@@ -13,6 +13,10 @@
 	</bean>-->
 	<bean id="dataSource_security_hsqldb"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<jta-data-source>java:jboss/datasources/proximagrade</jta-data-source>
+
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:hsql://localhost/pgrd" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
 	</bean>
 </beans>

@@ -13,6 +13,7 @@
 	</bean>-->
 	<bean id="dataSource_security_hsqldb"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<jta-data-source>java:jboss/datasources/proximagrade</jta-data-source>
+
+		<property name="url" value="java:jboss/datasources/proximagrade" />
 	</bean>
 </beans>
