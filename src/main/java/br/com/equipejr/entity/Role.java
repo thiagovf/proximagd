@@ -18,4 +18,9 @@ public class Role {
 	@Column(name="role", nullable=false)
 	private String description;
 
+	public String getDescription() {
+		return description;
+	}
+	
+
 }
