@@ -27,8 +27,8 @@
 	<authentication-manager>
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource_security_hsqldb"
-				users-by-username-query="select email,password, enabled from user where email=?"
-				authorities-by-username-query="SELECT u.EMAIL, ur.ROLE FROM user_roles ur LEFT JOIN user u on u.ROLE_USER_ROLE_ID = ur.USER_ROLE_ID  WHERE u.EMAIL = ?  " />
+				users-by-username-query="select email,password, enabled from USER where email=?"
+				authorities-by-username-query="SELECT u.EMAIL, ur.ROLE FROM USER_ROLES ur LEFT JOIN USER u on u.ROLE_USER_ROLE_ID = ur.USER_ROLE_ID  WHERE u.EMAIL = ?  " />
 		</authentication-provider>
 	</authentication-manager>
 
