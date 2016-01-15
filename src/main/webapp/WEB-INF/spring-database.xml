@@ -15,6 +15,6 @@
 		<property name="jndiName" value="java:/comp/env/jdbc/proximagrade" /> </bean> -->
 	<bean id="dataSource_security_hsqldb"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="jndiName" value="java:/comp/env/jdbc/MySQLDS" />
+		<property name="jndiName" value=" java:jboss/jdbc/MySQLDS" />
 	</bean>
 </beans>
