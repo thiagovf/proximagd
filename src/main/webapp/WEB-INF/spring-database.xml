@@ -7,18 +7,18 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" /> <property 
 		name="url" value="jdbc:mysql://localhost:3306/test" /> <property name="username" 
 		value="root" /> <property name="password" value="password" /> </bean> -->
-	<!-- <bean id="dataSource_security_hsqldb" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
-		<property name="driverClassName" value="org.hsqldb.jdbcDriver" /> <property 
-		name="url" value="jdbc:hsqldb:hsql://localhost/pgrd" /> <property name="username" 
-		value="sa" /> <property name="password" value="" /> </bean> -->
+	<!-- <bean id="dataSource_security_hsqldb"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:hsql://localhost/pgrd" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+	</bean>-->
 	<!-- <bean id="dataSource_security_hsqldb" class="org.springframework.jndi.JndiObjectFactoryBean"> 
 		<property name="jndiName" value="java:/comp/env/jdbc/proximagrade" /> </bean> -->
-	<bean id="dataSource_security_hsqldb"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://127.3.73.2:3306/proximagrade" />
-		<property name="username" value="admintZ3itBW" />
-		<property name="password" value="ElUiYVKW1z1r" />
-	</bean>
+	<bean id="dataSource_security_hsqldb" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" /> <property 
+		name="url" value="jdbc:mysql://127.3.73.2:3306/proximagrade" /> <property 
+		name="username" value="admintZ3itBW" /> <property name="password" value="ElUiYVKW1z1r" 
+		/> </bean>
 </beans>

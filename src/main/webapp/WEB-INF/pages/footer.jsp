@@ -2,7 +2,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="panel-footer" align="center">
-<sec:authorize access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
+	<sec:authorize access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
 		<!-- For login user -->
 		<c:url value="/j_spring_security_logout" var="logoutUrl" />
 		<form action="${logoutUrl}" method="post" id="logoutForm">

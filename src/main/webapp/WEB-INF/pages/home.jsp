@@ -24,24 +24,24 @@
 						access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
 						<c:choose>
 							<c:when test="${hasBeersWithoutDate}">
-							<div>
-							"Um homem que não paga o que deve é um devedor." (autor desconhecido)
-								Pague a grade seu caba!
-							</div>
+								<div align="left">
+								<p>"Um homem que não paga o que deve é um devedor."<small> (autor desconhecido)</small></p> 
+									<strong>Pague a grade, seu caba!</strong>
+								</div>
 							</c:when>
 							<c:when test="${hasBeersWithoutDate and not empty nextBeers}">
-							<div>
-							Opa, grade a vista!!
-							</div> 
+								<div align="left">
+								Opa, grade a vista!!
+								</div> 
 							</c:when>
 							<c:otherwise>
-							<div>
-							Você é um ótimo pagador. Estamos grato pelo seu empenho!
-							</div>
+								<div align="left">
+								Você é um ótimo pagador. Estamos grato pelo seu empenho!
+								</div>
 							</c:otherwise>
 						</c:choose>
 						<c:if test="${not empty nextBeers}">
-						<div>
+						<div align="left">
 						<h3>Suas próximas grades</h3>
 						</div>
 						<div class="table-responsive">
@@ -56,8 +56,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
 									<c:forEach items="${nextBeers}" var="nextBeer">
+									<tr>
 										<td>${nextBeer.payer.name}</td>
 										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy" var="date" />
 										<td>${date}</td>
@@ -69,18 +69,18 @@
 												<td>${dateToPay}</td>
 											</c:when>
 											<c:otherwise>
-												<td>Pague a grade, cabrito!</td>
+												<td>Agendar pagamento</td>
 											</c:otherwise>
 										</c:choose>
-									</c:forEach>
 									</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
 						</c:if>
 						<c:if test="${not empty allNextBeers}">
 						<div>
-						<h3>Grades a serem pagas</h3>
+						<h3 align="left">Grades a serem pagas</h3>
 						</div>
 						<div class="table-responsive">
 							<table class="table">
@@ -94,8 +94,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
 									<c:forEach items="${allNextBeers}" var="nextBeer">
+									<tr>
 										<td>${nextBeer.payer.name}</td>
 										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy" var="date" />
 										<td>${date}</td>
@@ -110,8 +110,8 @@
 												<td>Cobre o mancebo!</td>
 											</c:otherwise>
 										</c:choose>
-									</c:forEach>
 									</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>

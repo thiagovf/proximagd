@@ -8,12 +8,11 @@
 <title>Login Page</title>
 </head>
 <body onload='document.loginForm.username.focus();'>
-<jsp:include page="header.jsp" />
 	<div class="panel-body" align="center">
 		<div class="container " style="margin-top: 10%; margin-bottom: 10%;">
 			<div class="panel panel-default" style="max-width: 35%;" align="left">
-				<div class="panel-heading form-group">
-					<b><font color="#333">Login Form</font> </b>
+				<div class="panel-heading form-group" style=" background-color:black">
+					<b><font color="gray">Login Form</font> </b>
 				</div>
 				<div class="panel-body">
 					<c:if test="${not empty error}">

@@ -34,7 +34,7 @@ public class NextBeerDAO {
 		manager = factory.createEntityManager();
 		Query query = manager.createQuery("select n from User as u left join u.nextBeers as n where u.email = :email and n.paid = false and n.dateToPay is null ");
 		query.setParameter("email", email);
-		if (query.getFirstResult() != 0) {
+		if (query.getResultList().size() > 0) {
 			hasBeersWithoutDate = true;
 		}
 		return hasBeersWithoutDate;
@@ -43,7 +43,7 @@ public class NextBeerDAO {
 	@SuppressWarnings("unchecked")
 	public List<NextBeer> getAllNextBeers() {
 		manager = factory.createEntityManager();
-		Query query = manager.createQuery("select n from User as u left join u.nextBeers as n where n.paid = false ");
+		Query query = manager.createQuery("select n from User as u left join u.nextBeers as n where n.paid = false order by n.dateToPay");
 		return query.getResultList();
 	}
 }
