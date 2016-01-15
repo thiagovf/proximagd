@@ -4,7 +4,6 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	version="2.1">
  	<persistence-unit name="equipePU">
-		<!-- <jta-data-source>java:jboss/datasources/proximagrade</jta-data-source>-->
 		<class>br.com.equipejr.entity.User</class>
 		<class>br.com.equipejr.entity.Role</class>
 		<class>br.com.equipejr.entity.NextBeer</class>
