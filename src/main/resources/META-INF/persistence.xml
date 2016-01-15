@@ -12,7 +12,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.3.73.2:3306/proximagrade" />
 			<property name="javax.persistence.jdbc.user" value="admintZ3itBW" />
 			<property name="javax.persistence.jdbc.password" value="ElUiYVKW1z1r" />
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="false" />
 		</properties>
 	</persistence-unit>
