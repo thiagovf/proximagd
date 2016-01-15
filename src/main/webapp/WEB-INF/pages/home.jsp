@@ -9,9 +9,23 @@
 <HTML>
 <HEAD>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<link rel='stylesheet'
-	href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
-
+	<link rel='stylesheet' href='static/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='static/css/jquery.datetimepicker.css'>
+	<script type="text/javascript" src="static/js/jquery.js" ></script>
+	<script type="text/javascript" src="static/js/jquery.datetimepicker.full.js"></script>
+	<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+<script>
+jQuery(function() {
+	$( "#datepicker" ).datetimepicker({
+		dateFormat: 'dd-mm-yyyy'
+  	});
+	jQuery("#agendar").click(function(){
+		jQuery("#agendar").hide();
+		jQuery("#datepicker").show();
+		jQuery("#saveTheDate").show();
+	})
+});
+</script>
 <TITLE>Home</TITLE>
 </HEAD>
 <BODY>
@@ -59,17 +73,21 @@
 									<c:forEach items="${nextBeers}" var="nextBeer">
 									<tr>
 										<td>${nextBeer.payer.name}</td>
-										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy" var="date" />
+										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy HH:mm" var="date" />
 										<td>${date}</td>
 										<td>${nextBeer.motivation}</td>
 										<td>${nextBeer.payer.email}</td>
 										<c:choose>
 											<c:when test="${not empty nextBeer.dateToPay}">
-												<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy" var="dateToPay" />
+												<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
 												<td>${dateToPay}</td>
 											</c:when>
 											<c:otherwise>
-												<td>Agendar pagamento</td>
+												<td>
+												<a href="#" id="agendar">Agendar Pagamento</a>
+												<input id="datepicker" type="text" value="${nextBeer.dateToPay}" style="display:none;">
+												<button id="saveTheDate" style="display:none;">Save the date!</button>
+												</td>
 											</c:otherwise>
 										</c:choose>
 									</tr>
@@ -97,13 +115,13 @@
 									<c:forEach items="${allNextBeers}" var="nextBeer">
 									<tr>
 										<td>${nextBeer.payer.name}</td>
-										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy" var="date" />
+										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy HH:mm" var="date" />
 										<td>${date}</td>
 										<td>${nextBeer.motivation}</td>
 										<td>${nextBeer.payer.email}</td>
 										<c:choose>
 											<c:when test="${not empty nextBeer.dateToPay}">
-												<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy" var="dateToPay" />
+												<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
 												<td>${dateToPay}</td>
 											</c:when>
 											<c:otherwise>

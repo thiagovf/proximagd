@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="shortcut icon"
 	href="static/images/cf3e30d6-35e7-4f52-bfd9-f28a938f24d4.jpg">
+
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">

@@ -3,8 +3,7 @@
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<link rel='stylesheet'
-	href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
+<link rel='stylesheet' href='static/css/bootstrap.min.css'>
 <title>Login Page</title>
 </head>
 <body onload='document.loginForm.username.focus();'>
