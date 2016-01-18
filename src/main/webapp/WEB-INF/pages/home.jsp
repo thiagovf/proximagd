@@ -16,15 +16,39 @@
 	<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
 <script>
 jQuery(function() {
-	$( "#datepicker" ).datetimepicker({
-		dateFormat: 'dd-mm-yyyy'
-  	});
-	jQuery("#agendar").click(function(){
-		jQuery("#agendar").hide();
-		jQuery("#datepicker").show();
-		jQuery("#saveTheDate").show();
+	$( "#datepicker" ).change(function(){
+		console.log(this.value);
 	})
 });
+
+function showDatepicker(id){
+	jQuery("#agendar" + id).hide();
+	jQuery("#datepicker" + id).show();
+	jQuery("#saveTheDate" + id).show();
+	$( "#datepicker"+id ).datetimepicker({
+		 format:'d/m/Y H:i',
+		 minDate: new Date()
+ 	});
+	
+}
+function saveTheDate(id) {
+	if ($( "#datepicker" + id ).val() != '') {
+		var date = jQuery("#datepicker"+id).val();
+		$.ajax({
+			type: "POST",
+			url: "nextBeer/saveTheDate",
+			dataType: "json", 
+			data:{id, date}
+		}).complete(function(data) {
+			jQuery("#agendar" + id).hide();
+			jQuery("#datepicker" + id).hide();
+			jQuery("#saveTheDate" + id).hide();
+			jQuery("#dateToPay" + id).html(date);
+		});
+	} else {
+		console.log("don't do it, folks!");
+	}
+}
 </script>
 <TITLE>Home</TITLE>
 </HEAD>
@@ -58,35 +82,33 @@ jQuery(function() {
 						<div align="left">
 						<h3>Suas próximas grades</h3>
 						</div>
-						<div class="table-responsive">
-							<table class="table">
+						<div align="left">
+							<table class="table-condensed">
 								<thead>
 									<tr>
-										<th>Devedor</th>
 										<th>Data do Registro</th>
 										<th>Motivo da Grade</th>
-										<th>Email</th>
 										<th>Previsão Pagamento</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${nextBeers}" var="nextBeer">
 									<tr>
-										<td>${nextBeer.payer.name}</td>
 										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy HH:mm" var="date" />
 										<td>${date}</td>
 										<td>${nextBeer.motivation}</td>
-										<td>${nextBeer.payer.email}</td>
 										<c:choose>
 											<c:when test="${not empty nextBeer.dateToPay}">
 												<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
 												<td>${dateToPay}</td>
 											</c:when>
 											<c:otherwise>
-												<td>
-												<a href="#" id="agendar">Agendar Pagamento</a>
-												<input id="datepicker" type="text" value="${nextBeer.dateToPay}" style="display:none;">
-												<button id="saveTheDate" style="display:none;">Save the date!</button>
+												<td id="dateToPay${nextBeer.id}">
+												<a href="#" id="agendar${nextBeer.id}" onclick="showDatepicker(${nextBeer.id})">Agendar Grade!</a>
+												<input id="datepicker${nextBeer.id}" type="text" style="display:none;" value="">
+												<a href="#" id="saveTheDate${nextBeer.id}" style="display:none;" onclick="saveTheDate('${nextBeer.id}')" title="Save the date!">
+													<img src="static/images/save.png" alt="Salve!"/>
+												</a>
 												</td>
 											</c:otherwise>
 										</c:choose>

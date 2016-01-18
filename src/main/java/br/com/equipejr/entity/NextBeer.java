@@ -41,6 +41,10 @@ public class NextBeer {
 		return date;
 	}
 
+	public void setDateToPay(Calendar dateToPay) {
+		this.dateToPay = dateToPay;
+	}
+
 	public Calendar getDateToPay() {
 		return dateToPay;
 	}
@@ -51,6 +55,10 @@ public class NextBeer {
 
 	public String getMotivation() {
 		return motivation;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 }

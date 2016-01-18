@@ -1,5 +1,6 @@
 package br.com.equipejr.dao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -24,7 +25,7 @@ public class NextBeerDAO {
 	@SuppressWarnings("unchecked")
 	public List<NextBeer> getBeers(String email) {
 		manager = factory.createEntityManager();
-		Query query = manager.createQuery("select n from User as u left join u.nextBeers as n where u.email = :email and n.paid = false ");
+		Query query = manager.createQuery("select n from User as u left join u.nextBeers as n where u.email = :email and n.paid = false order by n.dateToPay");
 		query.setParameter("email", email);
 		return query.getResultList();
 	}
@@ -45,5 +46,21 @@ public class NextBeerDAO {
 		manager = factory.createEntityManager();
 		Query query = manager.createQuery("select n from User as u left join u.nextBeers as n where n.paid = false order by n.dateToPay");
 		return query.getResultList();
+	}
+
+	public NextBeer getNextBeer(Long id) {
+		manager = factory.createEntityManager();
+		Query query = manager.createQuery("select n from NextBeer as n where n.id = :id ");
+		query.setParameter("id", id);
+		return (NextBeer)query.getSingleResult();
+	}
+	
+	public NextBeer update(Long id, Calendar dateToPay) {
+		manager = factory.createEntityManager();
+		NextBeer nextBeer = manager.find(NextBeer.class, id);
+		manager.getTransaction().begin();
+		nextBeer.setDateToPay(dateToPay);
+		manager.getTransaction().commit();
+		return nextBeer;
 	}
 }
