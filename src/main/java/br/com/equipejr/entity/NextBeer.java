@@ -61,4 +61,24 @@ public class NextBeer {
 		return id;
 	}
 
+	public Boolean getPaid() {
+		return paid;
+	}
+
+	public void setPaid(Boolean paid) {
+		this.paid = paid;
+	}
+
+	public void setDate(Calendar date) {
+		this.date = date;
+	}
+
+	public void setMotivation(String motivation) {
+		this.motivation = motivation;
+	}
+
+	public void setPayer(User payer) {
+		this.payer = payer;
+	}
+
 }

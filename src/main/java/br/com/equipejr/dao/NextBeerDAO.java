@@ -79,4 +79,9 @@ public class NextBeerDAO {
 		manager.getTransaction().commit();
 		return nextBeer;
 	}
+	
+	public void save(NextBeer nextBeer) {
+		manager = factory.createEntityManager();
+		manager.merge(nextBeer);
+	}
 }

@@ -2,7 +2,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="shortcut icon"
-	href="static/images/cf3e30d6-35e7-4f52-bfd9-f28a938f24d4.jpg">
+	href="/proximagrade/static/images/cf3e30d6-35e7-4f52-bfd9-f28a938f24d4.jpg">
 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -15,17 +15,18 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="welcome">
-				<img src="static/images/beer.jpg" alt="" height="50" width="60">
+			<a class="navbar-brand" href="/proximagrade/welcome">
+				<img src="/proximagrade/static/images/beer.jpg" alt="" height="50" width="60">
 			</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="welcome">Home</a></li>
-				<li><a href="about">Sobre</a></li>
-				<li><a href="contact">Contato</a></li>
+				<li><a href="/proximagrade/welcome">Home</a></li>
+				<li><a href="/proximagrade/about">Sobre</a></li>
+				<li><a href="/proximagrade/contact">Contato</a></li>
+				<li><a href="/proximagrade/newbeer/register" style="color:white">«Ofereça uma grade»</a></li>
 			</ul>
 			<sec:authorize access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
 				<div align="right">

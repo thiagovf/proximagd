@@ -7,8 +7,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AboutController {
+
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
-	public ModelAndView adminPage() {
+	public ModelAndView aboutPage() {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("about");

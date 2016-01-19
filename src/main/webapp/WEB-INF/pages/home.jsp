@@ -9,12 +9,12 @@
 <HTML>
 <HEAD>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-	<link rel='stylesheet' href='static/css/bootstrap.min.css'>
-	<link rel='stylesheet' href='static/css/jquery.datetimepicker.css'>
-	<script type="text/javascript" src="static/js/jquery.js" ></script>
-	<script type="text/javascript" src="static/js/jquery.datetimepicker.full.js"></script>
-	<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-	<script language="JavaScript" src="static/js/countdown.js"></script>
+	<link rel='stylesheet' href='/proximagrade/static/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='/proximagrade/static/css/jquery.datetimepicker.css'>
+	<script type="text/javascript" src="/proximagrade/static/js/jquery.js" ></script>
+	<script type="text/javascript" src="/proximagrade/static/js/jquery.datetimepicker.full.js"></script>
+	<script type="text/javascript" src="/proximagrade/static/js/bootstrap.min.js"></script>
+	<script language="JavaScript" src="/proximagrade/static/js/countdown.js"></script>
 <script>
 jQuery(function() {
 	$( "#datepicker" ).change(function(){

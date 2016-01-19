@@ -12,6 +12,7 @@
 		<intercept-url pattern="/" access="hasAnyRole('ROLE_NORMAL', 'ROLE_ADMIN')" />
 		<intercept-url pattern="/contact" access="hasAnyRole('ROLE_NORMAL', 'ROLE_ADMIN')" />
 		<intercept-url pattern="/about" access="hasAnyRole('ROLE_NORMAL', 'ROLE_ADMIN')" />
+		<intercept-url pattern="/newbeer/*" access="hasAnyRole('ROLE_NORMAL', 'ROLE_ADMIN')" />
 		<intercept-url pattern="/welcome**" access="hasAnyRole('ROLE_NORMAL', 'ROLE_ADMIN')" />
 
 		<!-- access denied page -->
