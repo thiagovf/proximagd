@@ -22,10 +22,10 @@ public class NextBeer {
 	private Long id;
 	
 	@Column(nullable = false)
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar date;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dateToPay;
 	
 	@Column(nullable = false)

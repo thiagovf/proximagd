@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.equipejr.dao.NextBeerDAO;
+import br.com.equipejr.entity.NextBeer;
 
 @Controller
 public class MainController {
@@ -28,6 +29,10 @@ public class MainController {
 			model.addObject("nextBeers", nextBeerDAO.getBeers(userDetail.getUsername()));
 			model.addObject("hasBeersWithoutDate", nextBeerDAO.hasBeersWithoutDate(userDetail.getUsername()));
 			model.addObject("allNextBeers", nextBeerDAO.getAllNextBeers());
+			NextBeer nextestBeer = nextBeerDAO.getNextBeer();
+			if (nextestBeer != null) {
+				model.addObject("dateToPayNextBeers", nextestBeer.getDateToPay());
+			}
 		}
 		model.addObject("title", "Spring Security Login Form - Database Authentication");
 		model.addObject("message", "This is default page!");

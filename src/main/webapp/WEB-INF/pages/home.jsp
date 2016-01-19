@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="static/js/jquery.js" ></script>
 	<script type="text/javascript" src="static/js/jquery.datetimepicker.full.js"></script>
 	<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+	<script language="JavaScript" src="static/js/countdown.js"></script>
 <script>
 jQuery(function() {
 	$( "#datepicker" ).change(function(){
@@ -40,10 +41,11 @@ function saveTheDate(id) {
 			dataType: "json", 
 			data:{id, date}
 		}).complete(function(data) {
-			jQuery("#agendar" + id).hide();
-			jQuery("#datepicker" + id).hide();
-			jQuery("#saveTheDate" + id).hide();
-			jQuery("#dateToPay" + id).html(date);
+			//jQuery("#agendar" + id).hide();
+			//jQuery("#datepicker" + id).hide();
+			//jQuery("#saveTheDate" + id).hide();
+			//jQuery("#dateToPay" + id).html(date);
+			window.location.reload(true);
 		});
 	} else {
 		console.log("don't do it, folks!");
@@ -60,6 +62,26 @@ function saveTheDate(id) {
 				<div class="container " style="margin-top: 10%; margin-bottom: 10%;">
 					<sec:authorize
 						access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
+						<c:if test="${dateToPayNextBeers != null}">
+							<h2>Faltam</h2>
+							<h2 id="cntdwn">
+							<fmt:formatDate value="${dateToPayNextBeers.time}" pattern="MM/dd/yyyy hh:mm a" var="dateToPayNextBeer" />
+							<input id="next" type="hidden" value="${dateToPayNextBeer}" />
+							<script language="JavaScript">
+								//TargetDate = "12/31/2020 5:00 AM";
+								TargetDate = jQuery('#next').val();
+								BackColor = "palegreen";
+								ForeColor = "navy";
+								CountActive = true;
+								CountStepper = -1;
+								LeadingZero = true;
+								DisplayFormat = "%%D%% Dias, %%H%% Horas, %%M%% Minutos, %%S%% Segundos";
+								FinishMessage = "É hoje, menino!";
+							</script>
+							<script language="JavaScript" src="static/js/countdown.js"></script>
+							</h2>
+							<h2> para próxima grade! </h2>
+						</c:if>
 						<c:choose>
 							<c:when test="${hasBeersWithoutDate}">
 								<div align="left">
@@ -106,9 +128,9 @@ function saveTheDate(id) {
 												<td id="dateToPay${nextBeer.id}">
 												<a href="#" id="agendar${nextBeer.id}" onclick="showDatepicker(${nextBeer.id})">Agendar Grade!</a>
 												<input id="datepicker${nextBeer.id}" type="text" style="display:none;" value="">
-												<a href="#" id="saveTheDate${nextBeer.id}" style="display:none;" onclick="saveTheDate('${nextBeer.id}')" title="Save the date!">
-													<img src="static/images/save.png" alt="Salve!"/>
-												</a>
+												<button id="saveTheDate${nextBeer.id}" style="display:none;" onclick="saveTheDate('${nextBeer.id}')" 
+													class="glyphicon glyphicon-floppy-saved" title="Save the date!">
+												</button>
 												</td>
 											</c:otherwise>
 										</c:choose>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -52,7 +53,22 @@ public class NextBeerDAO {
 		manager = factory.createEntityManager();
 		Query query = manager.createQuery("select n from NextBeer as n where n.id = :id ");
 		query.setParameter("id", id);
-		return (NextBeer)query.getSingleResult();
+		try {
+			return (NextBeer)query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
+	public NextBeer getNextBeer() {
+		manager = factory.createEntityManager();
+		Query query = manager.createQuery("select n from NextBeer as n where n.dateToPay is not null order by n.dateToPay ");
+		query.setMaxResults(1);
+		try {
+			return (NextBeer)query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 	
 	public NextBeer update(Long id, Calendar dateToPay) {
