@@ -9,7 +9,7 @@
 <body onload='document.loginForm.username.focus();'>
 	<div class="panel-body" align="center">
 		<div class="container " style="margin-top: 10%; margin-bottom: 10%;">
-			<div class="panel panel-default" style="max-width: 35%;" align="left">
+			<div class="panel panel-default" style="max-width: 35%; min-width: 200px;" align="left">
 				<div class="panel-heading form-group" style=" background-color:black">
 					<b><font color="gray">Login Form</font> </b>
 				</div>

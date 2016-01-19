@@ -15,7 +15,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="welcome">
 				<img src="static/images/beer.jpg" alt="" height="50" width="60">
 			</a>
 		</div>
@@ -23,9 +23,9 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="#">About</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="welcome">Home</a></li>
+				<li><a href="about">Sobre</a></li>
+				<li><a href="contact">Contato</a></li>
 			</ul>
 			<sec:authorize access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
 				<div align="right">
