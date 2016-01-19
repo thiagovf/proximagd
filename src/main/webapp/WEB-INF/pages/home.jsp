@@ -63,7 +63,6 @@ function saveTheDate(id) {
 					<sec:authorize
 						access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
 						<c:if test="${dateToPayNextBeers != null}">
-							<h2>Faltam</h2>
 							<h2 id="cntdwn">
 							<fmt:formatDate value="${dateToPayNextBeers.time}" pattern="MM/dd/yyyy hh:mm a" var="dateToPayNextBeer" />
 							<input id="next" type="hidden" value="${dateToPayNextBeer}" />
@@ -75,12 +74,11 @@ function saveTheDate(id) {
 								CountActive = true;
 								CountStepper = -1;
 								LeadingZero = true;
-								DisplayFormat = "%%D%% Dias, %%H%% Horas, %%M%% Minutos, %%S%% Segundos";
+								DisplayFormat = "Faltam %%D%% Dias, %%H%% Horas, %%M%% Minutos, %%S%% Segundos para próxima grade!";
 								FinishMessage = "É hoje, menino!";
 							</script>
 							<script language="JavaScript" src="static/js/countdown.js"></script>
 							</h2>
-							<h2> para próxima grade! </h2>
 						</c:if>
 						<c:choose>
 							<c:when test="${hasBeersWithoutDate}">
