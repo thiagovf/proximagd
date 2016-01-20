@@ -1,5 +1,7 @@
 package br.com.equipejr.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -21,5 +23,13 @@ public class UserDAO {
 		query.setParameter("email", email);
 		
 		return (User)query.getSingleResult();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<String> getAllUserMails() {
+		manager = factory.createEntityManager();
+		Query query = manager.createQuery("select u.email from User as u ");
+		
+		return query.getResultList();
 	}
 }
