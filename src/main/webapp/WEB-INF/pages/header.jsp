@@ -1,10 +1,10 @@
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="context" value="${pageContext.request.contextPath}" />
 <link rel="shortcut icon"
 	href="${context}/static/images/cf3e30d6-35e7-4f52-bfd9-f28a938f24d4.jpg">
 	
-<c:set var="context" value="${pageContext.request.contextPath}" />
 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

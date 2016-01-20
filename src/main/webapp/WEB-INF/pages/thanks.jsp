@@ -8,6 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
 <HEAD>
+<c:set var="context" value="${pageContext.request.contextPath}" />
 <META http-equiv="refresh" content="5;URL=${context}/welcome">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 	<link rel='stylesheet' href='${context}/static/css/bootstrap.min.css'>
