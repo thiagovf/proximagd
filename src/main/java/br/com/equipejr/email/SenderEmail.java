@@ -29,7 +29,7 @@ public class SenderEmail {
 		session = Session.getDefaultInstance(props,
 				new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("equipe.junior","coelhofelpudo");
+				return new PasswordAuthentication("equipe.junior@gmail.com","coelhofelpudo");
 			}
 		});
 	}
