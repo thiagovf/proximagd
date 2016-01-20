@@ -11,26 +11,24 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 	<link rel='stylesheet' href='/proximagrade/static/css/bootstrap.min.css'>
 	<link rel='stylesheet' href='/proximagrade/static/css/jquery.datetimepicker.css'>
+	<link rel='stylesheet' href='/proximagrade/static/css/home.css'>
 	<script type="text/javascript" src="/proximagrade/static/js/jquery.js" ></script>
 	<script type="text/javascript" src="/proximagrade/static/js/jquery.datetimepicker.full.js"></script>
 	<script type="text/javascript" src="/proximagrade/static/js/bootstrap.min.js"></script>
 	<script language="JavaScript" src="/proximagrade/static/js/countdown.js"></script>
 <script>
-jQuery(function() {
-	$( "#datepicker" ).change(function(){
-		console.log(this.value);
-	})
-});
 
 function showDatepicker(id){
 	jQuery("#agendar" + id).hide();
 	jQuery("#datepicker" + id).show();
+	jQuery("#calendar" + id).show();
 	jQuery("#saveTheDate" + id).show();
 	$( "#datepicker"+id ).datetimepicker({
 		 format:'d/m/Y H:i',
 		 minDate: new Date()
  	});
-	
+	$('#datepicker'+id).datetimepicker('show');
+
 }
 function saveTheDate(id) {
 	if ($( "#datepicker" + id ).val() != '') {
@@ -48,7 +46,7 @@ function saveTheDate(id) {
 			window.location.reload(true);
 		});
 	} else {
-		console.log("don't do it, folks!");
+		console.log("don't do it!");
 	}
 }
 </script>
@@ -124,10 +122,16 @@ function saveTheDate(id) {
 											</c:when>
 											<c:otherwise>
 												<td id="dateToPay${nextBeer.id}">
-												<a href="#" id="agendar${nextBeer.id}" onclick="showDatepicker(${nextBeer.id})">Agendar Grade!</a>
-												<input id="datepicker${nextBeer.id}" type="text" style="display:none;" value="">
+												<script type="text/javascript">
+												</script>
+												<a href="javascript:void(0)" id="agendar${nextBeer.id}" onclick="showDatepicker(${nextBeer.id})">Agendar Grade!</a>
+												<input id="datepicker${nextBeer.id}" type="text" style="display:none;">
+												
+												<a href='javascript:void(0)' id="calendar${nextBeer.id}" style="display:none;" onclick="$('#datepicker${nextBeer.id}').datetimepicker('show');" 
+													class="glyphicon glyphicon-calendar" title="Calendário!">
+												</a>
 												<button id="saveTheDate${nextBeer.id}" style="display:none;" onclick="saveTheDate('${nextBeer.id}')" 
-													class="glyphicon glyphicon-floppy-saved" title="Save the date!">
+													class="glyphicon glyphicon-floppy-disk" title="Save the date!">
 												</button>
 												</td>
 											</c:otherwise>
@@ -138,6 +142,7 @@ function saveTheDate(id) {
 							</table>
 						</div>
 						</c:if>
+
 						<c:if test="${not empty allNextBeers}">
 						<div>
 						<h3 align="left">Grades a serem pagas</h3>
@@ -176,7 +181,6 @@ function saveTheDate(id) {
 							</table>
 						</div>
 						</c:if>
-						
 					</sec:authorize>
 				</div>
 			</div>

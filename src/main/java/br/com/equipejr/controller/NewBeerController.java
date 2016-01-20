@@ -18,7 +18,7 @@ import br.com.equipejr.entity.User;
 
 @Controller
 @RequestMapping("/newbeer")
-public class NewBeer {
+public class NewBeerController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView requestNewBeer() {
@@ -32,7 +32,7 @@ public class NewBeer {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public void saveNewBeer(
+	public ModelAndView saveNewBeer(
 			@RequestParam(value="reason", required=true) String reason,
 			@RequestParam(value="user", required=true) String email,
 			@RequestParam(value="dateToPay", required=true) @DateTimeFormat(pattern="dd/MM/yy HH:mm") Calendar dateToPay) {
@@ -40,12 +40,16 @@ public class NewBeer {
 		nextBeer.setDateToPay(dateToPay);
 		nextBeer.setDate(Calendar.getInstance());
 		nextBeer.setMotivation(reason);
+		nextBeer.setPaid(false);
 		UserDAO userDAO = new UserDAO();
 		User user = userDAO.getUser(email);
 		nextBeer.setPayer(user);
 
 		NextBeerDAO nextBeerDAO = new NextBeerDAO();
 		nextBeerDAO.save(nextBeer);
+		ModelAndView model = new ModelAndView();
+		model.setViewName("thanks");
+		return model;
 	}
 
 }

@@ -34,7 +34,7 @@ public class NextBeer {
 	@Column(nullable = false)
 	private String motivation;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.DETACH)
 	private User payer;
 
 	public Calendar getDate() {

@@ -82,6 +82,6 @@ public class NextBeerDAO {
 	
 	public void save(NextBeer nextBeer) {
 		manager = factory.createEntityManager();
-		manager.merge(nextBeer);
+		manager.persist(nextBeer);
 	}
 }
