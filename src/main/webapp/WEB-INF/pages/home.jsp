@@ -9,13 +9,13 @@
 <HTML>
 <HEAD>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-	<link rel='stylesheet' href='/proximagrade/static/css/bootstrap.min.css'>
-	<link rel='stylesheet' href='/proximagrade/static/css/jquery.datetimepicker.css'>
-	<link rel='stylesheet' href='/proximagrade/static/css/home.css'>
-	<script type="text/javascript" src="/proximagrade/static/js/jquery.js" ></script>
-	<script type="text/javascript" src="/proximagrade/static/js/jquery.datetimepicker.full.js"></script>
-	<script type="text/javascript" src="/proximagrade/static/js/bootstrap.min.js"></script>
-	<script language="JavaScript" src="/proximagrade/static/js/countdown.js"></script>
+	<link rel='stylesheet' href='${context}/static/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='${context}/static/css/jquery.datetimepicker.css'>
+	<link rel='stylesheet' href='${context}/static/css/home.css'>
+	<script type="text/javascript" src="${context}/static/js/jquery.js" ></script>
+	<script type="text/javascript" src="${context}/static/js/jquery.datetimepicker.full.js"></script>
+	<script type="text/javascript" src="${context}/static/js/bootstrap.min.js"></script>
+	<script language="JavaScript" src="${context}/static/js/countdown.js"></script>
 <script>
 
 function showDatepicker(id){

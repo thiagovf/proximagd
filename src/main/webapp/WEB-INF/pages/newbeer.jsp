@@ -9,11 +9,11 @@
 <HTML>
 <HEAD>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<link rel='stylesheet' href='/proximagrade/static/css/bootstrap.min.css'>
-<link rel='stylesheet' href='/proximagrade/static/css/jquery.datetimepicker.css'>
-<script type="text/javascript" src="/proximagrade/static/js/jquery.js"></script>
-<script type="text/javascript" src="/proximagrade/static/js/jquery.datetimepicker.full.js"></script>
-<script type="text/javascript" src="/proximagrade/static/js/bootstrap.min.js"></script>
+<link rel='stylesheet' href='${context}/static/css/bootstrap.min.css'>
+<link rel='stylesheet' href='${context}/static/css/jquery.datetimepicker.css'>
+<script type="text/javascript" src="${context}/static/js/jquery.js"></script>
+<script type="text/javascript" src="${context}/static/js/jquery.datetimepicker.full.js"></script>
+<script type="text/javascript" src="${context}/static/js/bootstrap.min.js"></script>
 <script>
 jQuery(function() {
 	$( "#datepicker").datetimepicker({
@@ -54,7 +54,7 @@ jQuery(function() {
 							</div>
 							<div>
 								<button type="submit" class="btn btn-success btn-group-lg" >Salvar</button>
-								<a href="/proximagrade/welcome" class="btn btn-danger" >Cancelar</a>
+								<a href="${context}/welcome" class="btn btn-danger" >Cancelar</a>
 							</div>
 						</form>
 					</sec:authorize>
