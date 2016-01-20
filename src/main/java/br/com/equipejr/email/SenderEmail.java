@@ -18,7 +18,6 @@ public class SenderEmail {
 
 	private static Properties props;
 	private static Session session;
-	private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 	private static void init() {
 		props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -38,6 +37,7 @@ public class SenderEmail {
 		init();
 
 		try {
+			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
 			StringBuilder sb = new StringBuilder();
 			for(String email : emails) {
@@ -50,7 +50,7 @@ public class SenderEmail {
 			messageSB.append("Caro amigo,\n\n");
 			messageSB.append("Nosso amigo ");
 			messageSB.append(nxt.getPayer().getName());
-			messageSB.append(" se dispoes voluntariamente a pagar uma grade ");
+			messageSB.append(" se dispôs voluntariamente a pagar uma grade ");
 			messageSB.append("na data ").append(format.format(nxt.getDateToPay().getTime())).append(".");
 			messageSB.append("\n\n Motivo: ").append(nxt.getMotivation());
 			messageSB.append("\n\n Contamos com sua presença, ");
@@ -73,7 +73,7 @@ public class SenderEmail {
 		init();
 
 		try {
-
+			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 			StringBuilder sb = new StringBuilder();
 			for(String email : emails) {
 				sb.append(email);
