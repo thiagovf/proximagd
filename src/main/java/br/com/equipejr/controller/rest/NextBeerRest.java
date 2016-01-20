@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.equipejr.dao.NextBeerDAO;
-import br.com.equipejr.dao.UserDAO;
-import br.com.equipejr.email.SenderEmail;
-import br.com.equipejr.entity.NextBeer;
 
 @RestController
 @RequestMapping("/nextBeer")
@@ -24,9 +21,9 @@ public class NextBeerRest {
 			@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") Calendar date) {
 		NextBeerDAO nextBeerDAO = new NextBeerDAO();
 		nextBeerDAO.update(id, date);
-		UserDAO userDAO = new UserDAO();
-		NextBeer nxt = nextBeerDAO.getNextBeer(id);
-		SenderEmail.sendSaveTheDate(userDAO.getAllUserMails(), nxt);
+//		UserDAO userDAO = new UserDAO();
+//		NextBeer nxt = nextBeerDAO.getNextBeer(id);
+//		SenderEmail.sendSaveTheDate(userDAO.getAllUserMails(), nxt);
 	}
 	
 }

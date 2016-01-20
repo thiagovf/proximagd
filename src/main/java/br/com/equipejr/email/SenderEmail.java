@@ -1,6 +1,5 @@
 package br.com.equipejr.email;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Properties;
 
