@@ -2,6 +2,7 @@ package br.com.equipejr.controller;
 
 import java.util.Calendar;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +21,12 @@ import br.com.equipejr.entity.User;
 @RequestMapping("/newbeer")
 public class NewBeerController {
 
+	@Autowired
+	NextBeerDAO nextBeerDAO;
+	
+	@Autowired
+	UserDAO userDAO;
+	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView requestNewBeer() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -41,11 +48,10 @@ public class NewBeerController {
 		nextBeer.setDate(Calendar.getInstance());
 		nextBeer.setMotivation(reason);
 		nextBeer.setPaid(false);
-		UserDAO userDAO = new UserDAO();
+
 		User user = userDAO.getUser(email);
 		nextBeer.setPayer(user);
 
-		NextBeerDAO nextBeerDAO = new NextBeerDAO();
 		nextBeerDAO.save(nextBeer);
 		
 //		SenderEmail.sendNewNextBeer(userDAO.getAllUserMails(), nextBeer);

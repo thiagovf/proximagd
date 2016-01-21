@@ -1,5 +1,6 @@
 package br.com.equipejr.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,15 +17,14 @@ import br.com.equipejr.entity.NextBeer;
 @Controller
 public class MainController {
 
-//	@Autowired
-//	NextBeerDAO nextBeerDAO;
+	@Autowired
+	NextBeerDAO nextBeerDAO;
 	
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView defaultPage() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		ModelAndView model = new ModelAndView();
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			NextBeerDAO nextBeerDAO = new NextBeerDAO();
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			model.addObject("nextBeers", nextBeerDAO.getBeers(userDetail.getUsername()));
 			model.addObject("hasBeersWithoutDate", nextBeerDAO.hasBeersWithoutDate(userDetail.getUsername()));

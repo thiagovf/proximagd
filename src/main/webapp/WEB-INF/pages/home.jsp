@@ -125,15 +125,18 @@ function saveTheDate(id) {
 												<td id="dateToPay${nextBeer.id}">
 												<script type="text/javascript">
 												</script>
-												<a href="javascript:void(0)" id="agendar${nextBeer.id}" onclick="showDatepicker(${nextBeer.id})">Agendar Grade!</a>
-												<input id="datepicker${nextBeer.id}" type="text" style="display:none;">
-												
-												<a href='javascript:void(0)' id="calendar${nextBeer.id}" style="display:none;" onclick="$('#datepicker${nextBeer.id}').datetimepicker('show');" 
-													class="glyphicon glyphicon-calendar" title="Calendário!">
-												</a>
-												<button id="saveTheDate${nextBeer.id}" style="display:none;" onclick="saveTheDate('${nextBeer.id}')" 
-													class="glyphicon glyphicon-floppy-disk" title="Save the date!">
-												</button>
+												<form action="nextBeer/save" method="POST">
+													<a href="javascript:void(0)" id="agendar${nextBeer.id}" onclick="showDatepicker(${nextBeer.id})">Agendar Grade!</a>
+													<input id="datepicker${nextBeer.id}" type="text" style="display:none;" name="date">
+													<input type="text" style="display:none;" name="id" value="${nextBeer.id}">
+													
+													<a href='javascript:void(0)' id="calendar${nextBeer.id}" style="display:none;" onclick="$('#datepicker${nextBeer.id}').datetimepicker('show');" 
+														class="glyphicon glyphicon-calendar" title="Calendário!">
+													</a>
+													<button id="saveTheDate${nextBeer.id}" style="display:none;"
+														class="glyphicon glyphicon-floppy-disk" title="Save the date!">
+													</button>
+												</form>
 												</td>
 											</c:otherwise>
 										</c:choose>
