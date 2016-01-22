@@ -25,8 +25,9 @@ function showDatepicker(id){
 	jQuery("#calendar" + id).show();
 	jQuery("#saveTheDate" + id).show();
 	$( "#datepicker"+id ).datetimepicker({
-		 format:'d/m/Y H:i',
-		 minDate: new Date()
+		format:'d/m/Y H:i',
+		minDate: new Date(),
+		value: new Date()
  	});
 	$('#datepicker'+id).datetimepicker('show');
 

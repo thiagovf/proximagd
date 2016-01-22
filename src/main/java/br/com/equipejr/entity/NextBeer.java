@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -18,7 +19,7 @@ import javax.persistence.TemporalType;
 public class NextBeer {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	
 	@Column(nullable = false)
@@ -79,6 +80,10 @@ public class NextBeer {
 
 	public void setPayer(User payer) {
 		this.payer = payer;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

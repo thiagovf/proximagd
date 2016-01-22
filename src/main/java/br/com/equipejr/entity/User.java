@@ -58,4 +58,40 @@ public class User {
 		this.id = id;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public List<NextBeer> getNextBeers() {
+		return nextBeers;
+	}
+
+	public void setNextBeers(List<NextBeer> nextBeers) {
+		this.nextBeers = nextBeers;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
 }

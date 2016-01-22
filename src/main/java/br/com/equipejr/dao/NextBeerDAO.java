@@ -4,37 +4,35 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.equipejr.entity.NextBeer;
 
-@Repository(value = "nextBeerDAO")
+//@Repository(value = "nextBeerDAO")
+@Component
 public class NextBeerDAO {
 
-	private EntityManagerFactory factory = Persistence.createEntityManagerFactory("equipePU");
-	private EntityManager manager;
+//	private EntityManagerFactory factory = Persistence.createEntityManagerFactory("equipePU");
 //	@Autowired
 //	SessionFactory sessionFactory;
-//	@Autowired
-//	private EntityManager entityManager;
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	@SuppressWarnings("unchecked")
 	public List<NextBeer> getBeers(String email) {
-		manager = factory.createEntityManager();
-		Query query = manager.createQuery("select n from User as u left join u.nextBeers as n where u.email = :email and n.paid = false order by n.dateToPay");
+		Query query = entityManager.createQuery("select n from User as u left join u.nextBeers as n where u.email = :email and n.paid = false order by n.dateToPay");
 		query.setParameter("email", email);
 		return query.getResultList();
 	}
 
 	public boolean hasBeersWithoutDate(String email) {
 		boolean hasBeersWithoutDate = false;
-		manager = factory.createEntityManager();
-		Query query = manager.createQuery("select n from User as u left join u.nextBeers as n where u.email = :email and n.paid = false and n.dateToPay is null ");
+		Query query = entityManager.createQuery("select n from User as u left join u.nextBeers as n where u.email = :email and n.paid = false and n.dateToPay is null ");
 		query.setParameter("email", email);
 		if (query.getResultList().size() > 0) {
 			hasBeersWithoutDate = true;
@@ -44,14 +42,12 @@ public class NextBeerDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<NextBeer> getAllNextBeers() {
-		manager = factory.createEntityManager();
-		Query query = manager.createQuery("select n from User as u left join u.nextBeers as n where n.paid = false order by n.dateToPay");
+		Query query = entityManager.createQuery("select n from NextBeer as n left join fetch n.payer as u where n.paid = false order by n.dateToPay");
 		return query.getResultList();
 	}
 
 	public NextBeer getNextBeer(Long id) {
-		manager = factory.createEntityManager();
-		Query query = manager.createQuery("select n from NextBeer as n where n.id = :id ");
+		Query query = entityManager.createQuery("select n from NextBeer as n where n.id = :id ");
 		query.setParameter("id", id);
 		try {
 			return (NextBeer)query.getSingleResult();
@@ -61,8 +57,7 @@ public class NextBeerDAO {
 	}
 
 	public NextBeer getNextBeer() {
-		manager = factory.createEntityManager();
-		Query query = manager.createQuery("select n from NextBeer as n where n.dateToPay is not null order by n.dateToPay ");
+		Query query = entityManager.createQuery("select n from NextBeer as n where n.dateToPay is not null order by n.dateToPay ");
 		query.setMaxResults(1);
 		try {
 			return (NextBeer)query.getSingleResult();
@@ -71,17 +66,16 @@ public class NextBeerDAO {
 		}
 	}
 	
+	@Transactional
 	public NextBeer update(Long id, Calendar dateToPay) {
-		manager = factory.createEntityManager();
-		NextBeer nextBeer = manager.find(NextBeer.class, id);
-		manager.getTransaction().begin();
+		NextBeer nextBeer = entityManager.find(NextBeer.class, id);
 		nextBeer.setDateToPay(dateToPay);
-		manager.getTransaction().commit();
+		entityManager.merge(nextBeer);
 		return nextBeer;
 	}
 	
+	@Transactional
 	public void save(NextBeer nextBeer) {
-		manager = factory.createEntityManager();
-		manager.persist(nextBeer);
+		entityManager.persist(nextBeer);
 	}
 }

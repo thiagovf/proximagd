@@ -15,6 +15,8 @@
 <script type="text/javascript" src="${context}/static/js/jquery.js"></script>
 <script type="text/javascript" src="${context}/static/js/jquery.datetimepicker.full.js"></script>
 <script type="text/javascript" src="${context}/static/js/bootstrap.min.js"></script>
+
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 <script>
 jQuery(function() {
 	$( "#datepicker").datetimepicker({
@@ -24,6 +26,20 @@ jQuery(function() {
 	});
 });
 </script>
+</sec:authorize>
+<sec:authorize access="hasRole('ROLE_NORMAL') and !hasRole('ROLE_ADMIN')">
+<script>
+jQuery(function() {
+	$( "#datepicker").datetimepicker({
+		inline: true,
+		format:'d/m/Y H:i',
+		minDate: new Date(),
+		value: new Date()
+	});
+});
+</script>
+</sec:authorize>
+
 <TITLE>Nova Grade</TITLE>
 </HEAD>
 <BODY>
@@ -35,17 +51,21 @@ jQuery(function() {
 					<sec:authorize access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
 						
 						<form name="newbeer" action="save" method='POST' class="form">
-							<c:choose>
-								<c:when test="hasRole('ROLE_ADMIN')">
-									Seleciona usuário pagador!
-								</c:when>
-								<c:otherwise>
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+								<label for="user">Usuário</label> 
+								<select class="form-control" name="user" >
+									<option value="Selecione um usuário"> Selecione um usuário </option>
+									<c:forEach items="${names}" var="email">
+										<option value="${email}">${email}</option>
+									</c:forEach>
+								</select>
+							</sec:authorize>
+							<sec:authorize access="hasRole('ROLE_NORMAL') and !hasRole('ROLE_ADMIN')">
 								<label for="user">Usuário</label> 
 								<select class="form-control" name="user">
 									<option id="user" value="${name}">${name}</option>
 								</select>
-								</c:otherwise>
-							</c:choose>
+							</sec:authorize>
 							<div>
 								<label for="reasonIn">Motivo da Grade</label> 
 								<textarea class="form-control" name="reason" id="reasonIn"></textarea>
