@@ -28,10 +28,23 @@
 				<li><a href="${context}/welcome">Home</a></li>
 				<li><a href="${context}/about">Sobre</a></li>
 				<li><a href="${context}/contact">Contato</a></li>
-				<li><a href="${context}/newbeer/register" style="color:white">«Ofereça uma grade»</a></li>
+				<sec:authorize access="hasRole('ROLE_NORMAL') and !hasRole('ROLE_ADMIN')">
+					<li><a href="${context}/newbeer/register" style="color:white">«Ofereça uma grade»</a></li>
+				</sec:authorize>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<li><a href="${context}/newbeer/register" style="color:white">«Cadastre uma grade»</a></li>
+				</sec:authorize>
 			</ul>
 			<sec:authorize access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
 				<div align="right">
+					<div style="color:white">
+						<sec:authorize access="hasRole('ROLE_NORMAL') and !hasRole('ROLE_ADMIN')">
+						[ROLE_NORMAL]
+						</sec:authorize>
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+						[ROLE_ADMIN]
+						</sec:authorize>
+					</div>
 					<!-- For login user -->
 					<c:url value="/j_spring_security_logout" var="logoutUrl" />
 					<form action="${logoutUrl}" method="post" id="logoutForm">

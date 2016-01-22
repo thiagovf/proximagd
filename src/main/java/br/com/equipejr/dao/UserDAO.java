@@ -28,7 +28,7 @@ public class UserDAO {
 	@SuppressWarnings("unchecked")
 	public List<String> getAllUserMails() {
 		manager = factory.createEntityManager();
-		Query query = manager.createQuery("select u.email from User as u ");
+		Query query = manager.createQuery("select u.email from User as u order by u.email");
 		
 		return query.getResultList();
 	}
