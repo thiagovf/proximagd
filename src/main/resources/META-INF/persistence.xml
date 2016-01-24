@@ -9,9 +9,9 @@
 		<class>br.com.equipejr.entity.NextBeer</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.3.73.2:3306/proximagrade" />
-			<property name="javax.persistence.jdbc.user" value="admintZ3itBW" />
-			<property name="javax.persistence.jdbc.password" value="ElUiYVKW1z1r" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://OPENSHIFT_PROXIMAGRADE_DB_HOST:OPENSHIFT_PROXIMAGRADE_DB_PORT/proximagrade" />
+			<property name="javax.persistence.jdbc.user" value="OPENSHIFT_PROXIMAGRADE_DB_USERNAME" />
+			<property name="javax.persistence.jdbc.password" value="OPENSHIFT_PROXIMAGRADE_DB_PASSWORD" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
