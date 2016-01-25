@@ -116,8 +116,8 @@ function saveTheDate(id) {
 									<tr>
 										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy HH:mm" var="date" />
 										<td>${date}</td>
-										<td>${nextBeer.motivation}</td>
 										<jsp:useBean id="now" class="br.com.equipejr.auxi.CalendarUtil"/> 
+										<td>${nextBeer.motivation} ${now.daysBetweenDates(nextBeer.dateToPay)}</td>
 										
 										<c:choose>
 											<c:when test="${not empty nextBeer.dateToPay and now.daysBetweenDates(nextBeer.dateToPay) > 14}">
