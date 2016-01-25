@@ -104,6 +104,7 @@ function saveTheDate(id) {
 						</div>
 						<jsp:useBean id="now" class="br.com.equipejr.auxi.CalendarUtil"/> 
 						<div align="left">
+						aqui >>> ${now.daysBetweenDates(nextBeer.dateToPay)}
 							<table class="table-condensed">
 								<thead>
 									<tr>
