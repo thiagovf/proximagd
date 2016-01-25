@@ -102,7 +102,9 @@ function saveTheDate(id) {
 						<div align="left">
 						<h3>Suas próximas grades</h3>
 						</div>
+						<jsp:useBean id="now" class="br.com.equipejr.auxi.CalendarUtil"/> 
 						<div align="left">
+						aqui >>> ${now.daysBetweenDates(nextBeer.dateToPay)}
 							<table class="table-condensed">
 								<thead>
 									<tr>
@@ -116,8 +118,7 @@ function saveTheDate(id) {
 									<tr>
 										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy HH:mm" var="date" />
 										<td>${date}</td>
-										<jsp:useBean id="now" class="br.com.equipejr.auxi.CalendarUtil"/> 
-										<td>${nextBeer.motivation} ${now.daysBetweenDates(nextBeer.dateToPay)}</td>
+										<td>${nextBeer.motivation}</td>
 										
 										<c:choose>
 											<c:when test="${not empty nextBeer.dateToPay and now.daysBetweenDates(nextBeer.dateToPay) > 14}">
