@@ -117,15 +117,34 @@ function saveTheDate(id) {
 										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy HH:mm" var="date" />
 										<td>${date}</td>
 										<td>${nextBeer.motivation}</td>
+										<jsp:useBean id="now" class="br.com.equipejr.auxi.CalendarUtil"/> 
+										
 										<c:choose>
+											<c:when test="${not empty nextBeer.dateToPay and now.daysBetweenDates(nextBeer.dateToPay) > 14}">
+												<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
+												<td>
+												<form action="nextBeer/save" method="POST">
+													<div id="agendar${nextBeer.id}">${dateToPay}
+														<a href="javascript:void(0)"  onclick="showDatepicker(${nextBeer.id})" class="glyphicon glyphicon-pencil"></a>
+													</div>
+													<input id="datepicker${nextBeer.id}" type="text" style="display:none;" name="date">
+													<input type="text" style="display:none;" name="id" value="${nextBeer.id}">
+													
+													<a href='javascript:void(0)' id="calendar${nextBeer.id}" style="display:none;" onclick="$('#datepicker${nextBeer.id}').datetimepicker('show');" 
+														class="glyphicon glyphicon-calendar" title="Calendário!">
+													</a>
+													<button id="saveTheDate${nextBeer.id}" style="display:none;"
+														class="glyphicon glyphicon-floppy-disk" title="Save the date!">
+													</button>
+												</form>
+												</td>
+											</c:when>
 											<c:when test="${not empty nextBeer.dateToPay}">
 												<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
 												<td>${dateToPay}</td>
 											</c:when>
 											<c:otherwise>
 												<td id="dateToPay${nextBeer.id}">
-												<script type="text/javascript">
-												</script>
 												<form action="nextBeer/save" method="POST">
 													<a href="javascript:void(0)" id="agendar${nextBeer.id}" onclick="showDatepicker(${nextBeer.id})">Agendar Grade!</a>
 													<input id="datepicker${nextBeer.id}" type="text" style="display:none;" name="date">
