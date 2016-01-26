@@ -47,9 +47,14 @@ public class NewBeerController {
 	public ModelAndView saveNewBeer(
 			@RequestParam(value="reason", required=true) String reason,
 			@RequestParam(value="user", required=true) String email,
-			@RequestParam(value="dateToPay", required=true) @DateTimeFormat(pattern="dd/MM/yy HH:mm") Calendar dateToPay) {
+			@RequestParam(value="dateToPay", required=true) @DateTimeFormat(pattern="dd/MM/yy HH:mm") Calendar dateToPay,
+			@RequestParam(value="checkDate", required=true) Boolean checkDate) {
 		NextBeer nextBeer = new NextBeer();
-		nextBeer.setDateToPay(dateToPay);
+		if (checkDate && dateToPay == null) {
+			nextBeer.setDateToPay(Calendar.getInstance());
+		} else if (checkDate) {
+			nextBeer.setDateToPay(dateToPay);
+		}
 		nextBeer.setDate(Calendar.getInstance());
 		nextBeer.setMotivation(reason);
 		nextBeer.setPaid(false);

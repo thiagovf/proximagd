@@ -71,6 +71,7 @@ jQuery(function() {
 								<textarea class="form-control" name="reason" id="reasonIn"></textarea>
 							</div>
 							<div>
+								<input type="checkbox" name="checkDate" value="true">Definir Data<BR>
 								<input id="datepicker" type="text" name="dateToPay">
 							</div>
 							<div>
