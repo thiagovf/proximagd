@@ -2,6 +2,8 @@ package br.com.equipejr.controller;
 
 import java.util.Calendar;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
@@ -49,11 +51,12 @@ public class NewBeerController {
 			@RequestParam(value="reason", required=true) String reason,
 			@RequestParam(value="user", required=true) String email,
 			@RequestParam(value="dateToPay", required=true) @DateTimeFormat(pattern="dd/MM/yy HH:mm") Calendar dateToPay,
-			@RequestParam(value="checkDate", required=true) Boolean checkDate) {
+			HttpServletRequest request) {
+		
 		NextBeer nextBeer = new NextBeer();
-		if (checkDate && dateToPay == null) {
+		if (request.getParameter("checkDate") != null && dateToPay == null) {
 			nextBeer.setDateToPay(Calendar.getInstance());
-		} else if (checkDate) {
+		} else if (request.getParameter("checkDate") != null) {
 			nextBeer.setDateToPay(dateToPay);
 		}
 		nextBeer.setDate(Calendar.getInstance());
