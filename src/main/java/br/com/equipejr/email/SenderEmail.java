@@ -32,6 +32,7 @@ public class SenderEmail {
 			}
 		});
 	}
+	
 	public static void sendNewNextBeer(List<String> emails, NextBeer nxt){
 		init();
 
