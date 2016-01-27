@@ -1,5 +1,6 @@
 package br.com.equipejr.email;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Properties;
 
@@ -36,7 +37,6 @@ public class SenderEmail {
 		init();
 
 		try {
-//			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
 			StringBuilder sb = new StringBuilder();
 			for(String email : emails) {
@@ -49,8 +49,13 @@ public class SenderEmail {
 			messageSB.append("Caro amigo,\n\n");
 			messageSB.append("Nosso amigo ");
 			messageSB.append(nxt.getPayer().getName());
-			messageSB.append(" se dispôs voluntariamente a pagar uma grade. ");
-//			messageSB.append("na data ").append(format.format(nxt.getDateToPay().getTime())).append(".");
+			messageSB.append(" se dispôs voluntariamente a pagar uma grade ");
+			if (nxt.getDateToPay() != null) {
+				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+				messageSB.append("na data ").append(format.format(nxt.getDateToPay().getTime())).append(".");
+			} else {
+				messageSB.append(" SEM DATA DEFINIDA. ");
+			}
 			messageSB.append("\n\n Motivo: ").append(nxt.getMotivation());
 			messageSB.append("\n\n Contamos com sua presença, ");
 			messageSB.append("\n\n Equipe Jr. ");
@@ -72,7 +77,6 @@ public class SenderEmail {
 		init();
 
 		try {
-//			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 			StringBuilder sb = new StringBuilder();
 			for(String email : emails) {
 				sb.append(email);
@@ -84,8 +88,13 @@ public class SenderEmail {
 			messageSB.append("Caro amigo,");
 			messageSB.append("\n\nNosso amigo ");
 			messageSB.append(nxt.getPayer().getName());
-			messageSB.append(" resolveu agendar a grade que devia. ");
-//			messageSB.append(format.format(nxt.getDateToPay().getTime())).append(".");
+			messageSB.append(" resolveu agendar a grade que devia ");
+			if (nxt.getDateToPay() != null) {
+				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+				messageSB.append("na data ").append(format.format(nxt.getDateToPay().getTime())).append(".");
+			} else {
+				messageSB.append(" SEM DATA DEFINIDA. ");
+			}
 			messageSB.append("\n\n Motivo: ").append(nxt.getMotivation());
 			messageSB.append("\n\n Contamos com sua presença, ");
 			messageSB.append("\n\n Equipe Jr. ");
