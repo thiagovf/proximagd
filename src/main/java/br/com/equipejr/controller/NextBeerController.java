@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.equipejr.dao.NextBeerDAO;
+import br.com.equipejr.dao.UserDAO;
+import br.com.equipejr.email.SenderEmail;
+import br.com.equipejr.entity.NextBeer;
 
 @Controller
 @RequestMapping("/nextBeer")
@@ -25,11 +28,14 @@ public class NextBeerController {
 			@RequestParam(value="date", required=true)
 			@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") Calendar date) {
 		nextBeerDAO.update(id, date);
-//		UserDAO userDAO = new UserDAO();
-//		NextBeer nxt = nextBeerDAO.getNextBeer(id);
-//		SenderEmail.sendSaveTheDate(userDAO.getAllUserMails(), nxt);
+		UserDAO userDAO = new UserDAO();
+		NextBeer nxt = nextBeerDAO.getNextBeer(id);
+		try {
+			SenderEmail.sendSaveTheDate(userDAO.getAllUserMails(), nxt);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		ModelAndView model = new ModelAndView("redirect:/welcome");
-//		model.setViewName("/home");
 		return model;
 	}
 }
