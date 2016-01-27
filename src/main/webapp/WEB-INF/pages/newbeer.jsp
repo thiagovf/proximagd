@@ -28,6 +28,49 @@ jQuery(function() {
 </script>
 </sec:authorize>
 <sec:authorize access="hasRole('ROLE_NORMAL') and !hasRole('ROLE_ADMIN')">
+<script
+	src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+var map;
+function initialize() {
+  var mapOptions = {
+    zoom: 8,
+    center: new google.maps.LatLng(-34.397, 150.644)
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+/*  var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(-34.397, 150.644), 
+      map: map, 
+      title:"my hometown, Malim Nawar!"
+    }); 
+  marker.addListener('click', function() {
+	  console.log("yahoo");
+	    map.setZoom(8);
+	    map.setCenter(marker.getPosition());
+	  });*/
+	var markers = [];
+	map.addListener('click', function(event) {
+		console.log(new Number(event.latLng.lat()));
+		console.log(new Number(event.latLng.lng()));
+		setMapOnAll(null);
+		var marker = new google.maps.Marker({
+			
+			position: new google.maps.LatLng(new Number(event.latLng.lat()), new Number(event.latLng.lng())), 
+			map: map, 
+			title:"Próxima Grade!"
+		}); 
+		markers.push(marker);
+	});
+	function setMapOnAll(map) {
+		for (var i = 0; i < markers.length; i++) {
+			markers[i].setMap(map);
+		}
+	}
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 <script>
 jQuery(function() {
 	$( "#datepicker").datetimepicker({
@@ -47,10 +90,12 @@ jQuery(function() {
 		<div>
 			<jsp:include page="header.jsp" />
 			<div class="panel-body" align="center">
-				<div class="container " style="margin-top: 10%; margin-bottom: 10%; max-width: 360px; min-width: 200px;">
+				<div class="container " style="margin-top: 10%; margin-bottom: 10%; min-width: 200px;">
 					<sec:authorize access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
 						
 						<form name="newbeer" action="save" method='POST' class="form">
+						<div class="col-xs-12">
+						<div class="col-lg-6">
 							<sec:authorize access="hasRole('ROLE_ADMIN')">
 								<label for="user">Usuário</label> 
 								<select class="form-control" name="user" >
@@ -74,6 +119,12 @@ jQuery(function() {
 								<input type="checkbox" name="checkDate" value="true">Marque para a data definida abaixo ser considerada. Caso queira marcar a data em outro momento, deixe o campo desmarcado.<BR>
 								<input id="datepicker" type="text" name="dateToPay" >
 							</div>
+						</div>
+						<div class="col-lg-6">
+							<label>Selecione o local da grade</label> 
+							<div id="map-canvas" style="height: 100px; width: 300px"></div>
+						</div>
+						</div>
 							<div>
 								<button type="submit" class="btn btn-success btn-group-lg" >Salvar</button>
 								<a href="${context}/welcome" class="btn btn-danger" >Cancelar</a>
