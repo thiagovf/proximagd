@@ -19,7 +19,6 @@
 				Usuário: ${pageContext.request.userPrincipal.name} | <a
 					href="javascript:formSubmit()"> Logout</a>
 			</h5>
-			<a href="mailme">mail-me</a>
 		</c:if>
 	</sec:authorize>
 	<font style="color: #111">Copyright @2016 <a

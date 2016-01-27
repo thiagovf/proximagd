@@ -32,7 +32,6 @@ public class SenderEmail {
 			}
 		});
 	}
-	
 	public static void sendNewNextBeer(List<String> emails, NextBeer nxt){
 		init();
 
@@ -64,39 +63,6 @@ public class SenderEmail {
 			message.setText(messageSB.toString());
 			Transport.send(message);
 
-		} catch (MessagingException e) {
-			throw new RuntimeException(e);
-		}
-	}
-	public static void sendNewNextBeer(List<String> emails){
-		init();
-		
-		try {
-//			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-			
-			StringBuilder sb = new StringBuilder();
-			for(String email : emails) {
-				sb.append(email);
-				sb.append(",");
-			}
-			sb.deleteCharAt(sb.lastIndexOf(","));
-			
-			StringBuilder messageSB = new StringBuilder();
-			messageSB.append("Caro amigo,\n\n");
-			messageSB.append("Nosso amigo Teste");
-			messageSB.append(" se dispôs voluntariamente a pagar uma grade. ");
-			messageSB.append("\n\n Motivo: teste ");
-			messageSB.append("\n\n Contamos com sua presença, ");
-			messageSB.append("\n\n Equipe Jr. ");
-			
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("equipe.junior@gmail.com"));
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(sb.toString()));
-			message.setSubject("Nova grade");
-			message.setText(messageSB.toString());
-			Transport.send(message);
-			
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
