@@ -4,17 +4,13 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	version="2.1">
  	<persistence-unit name="equipePU">
+		<jta-data-source>java:jboss/datasources/ProximaGradeDS</jta-data-source>
 		<class>br.com.equipejr.entity.User</class>
 		<class>br.com.equipejr.entity.Role</class>
 		<class>br.com.equipejr.entity.NextBeer</class>
 		<properties>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/proximagrade" />
-			<property name="javax.persistence.jdbc.user" value="admintZ3itBW" />
-			<property name="javax.persistence.jdbc.password" value="ElUiYVKW1z1r" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="false" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 		</properties>
 	</persistence-unit>
 	<!-- <persistence-unit name="equipePU">
