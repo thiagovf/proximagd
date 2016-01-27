@@ -72,7 +72,7 @@ jQuery(function() {
 							</div>
 							<div>
 								<input type="checkbox" name="checkDate" value="true">Definir Data<BR>
-								<input id="datepicker" type="text" name="dateToPay">
+								<input id="datepicker" type="text" name="dateToPay" >
 							</div>
 							<div>
 								<button type="submit" class="btn btn-success btn-group-lg" >Salvar</button>
