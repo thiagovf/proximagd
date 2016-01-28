@@ -3,7 +3,10 @@
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<c:set var="context" value="${pageContext.request.contextPath}" />
 <link rel='stylesheet' href='static/css/bootstrap.min.css'>
+<link rel="shortcut icon"
+	href="${context}/static/images/cf3e30d6-35e7-4f52-bfd9-f28a938f24d4.jpg">
 <title>Login Page</title>
 </head>
 <body onload='document.loginForm.username.focus();'>

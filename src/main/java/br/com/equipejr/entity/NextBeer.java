@@ -35,10 +35,10 @@ public class NextBeer {
 	@Column(nullable = false)
 	private String motivation;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition="Varchar(255) default ''")
 	private String lat;
 
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition="Varchar(255) default ''")
 	private String lng;
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.DETACH)
