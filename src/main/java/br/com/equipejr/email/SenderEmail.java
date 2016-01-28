@@ -59,6 +59,8 @@ public class SenderEmail {
 			messageSB.append("\n\n Motivo: ").append(nxt.getMotivation());
 			messageSB.append("\n\n Contamos com sua presença, ");
 			messageSB.append("\n\n Equipe Jr. ");
+			messageSB.append("\n\n http://proximagrade-equipejr.rhcloud.com/ ");
+
 			
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("equipe.junior@gmail.com"));
@@ -98,6 +100,7 @@ public class SenderEmail {
 			messageSB.append("\n\n Motivo: ").append(nxt.getMotivation());
 			messageSB.append("\n\n Contamos com sua presença, ");
 			messageSB.append("\n\n Equipe Jr. ");
+			messageSB.append("\n\n http://proximagrade-equipejr.rhcloud.com/ ");
 			
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("equipe.junior@gmail.com"));
