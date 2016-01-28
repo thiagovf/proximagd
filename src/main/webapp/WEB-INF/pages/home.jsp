@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="${context}/static/js/jquery.datetimepicker.full.js"></script>
 	<script type="text/javascript" src="${context}/static/js/bootstrap.min.js"></script>
 	<script language="JavaScript" src="${context}/static/js/countdown.js"></script>
+	<script type="text/javascript" src="${context}/static/js/googleMaps.js"></script>
 <script>
 
 function showDatepicker(id){
@@ -60,8 +61,10 @@ function saveTheDate(id) {
 			<jsp:include page="header.jsp" />
 			<div class="panel-body" align="center">
 				<div class="container " style="margin-top: 10%; margin-bottom: 10%;">
+				<div class="col-xs-12">
 					<sec:authorize
 						access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
+						<div class="col-lg-12">
 						<c:if test="${dateToPayNextBeers != null}">
 							<h2 id="cntdwn">
 							<fmt:formatDate value="${dateToPayNextBeers.time}" pattern="MM/dd/yyyy hh:mm a" var="dateToPayNextBeer" />
@@ -166,48 +169,96 @@ function saveTheDate(id) {
 							</table>
 						</div>
 						</c:if>
+						</div>
 
 						<c:if test="${not empty allNextBeers}">
-						<div>
-						<h3 align="left">Grades a serem pagas</h3>
-						</div>
-						<div class="table-responsive">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>Devedor</th>
-										<th>Data do Registro</th>
-										<th>Motivo da Grade</th>
-										<th>Email</th>
-										<th>Previsão Pagamento</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${allNextBeers}" var="nextBeer">
-									<tr>
-										<td>${nextBeer.payer.name}</td>
-										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy HH:mm" var="date" />
-										<td>${date}</td>
-										<td>${nextBeer.motivation}</td>
-										<td>${nextBeer.payer.email}</td>
-										<c:choose>
-											<c:when test="${not empty nextBeer.dateToPay}">
-												<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
-												<td>${dateToPay}</td>
-											</c:when>
-											<c:otherwise>
-												<td>Cobre o mancebo!</td>
-											</c:otherwise>
-										</c:choose>
-									</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+						<div class="col-lg-12">
+							<div class="col-lg-6">
+								<div>
+								<h3 align="left">Grades a serem pagas</h3>
+								</div>
+								<div class="table-responsive" style="min-width: 200px;">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Devedor</th>
+												<th>Data do Registro</th>
+												<th>Motivo da Grade</th>
+												<th>Email</th>
+												<th>Previsão Pagamento</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${allNextBeers}" var="nextBeer">
+											<tr>
+												<td>${nextBeer.payer.name}</td>
+												<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy HH:mm" var="date" />
+												<td>${date}</td>
+												<td>${nextBeer.motivation}</td>
+												<td>${nextBeer.payer.email}</td>
+												<c:choose>
+													<c:when test="${not empty nextBeer.dateToPay}">
+														<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
+														<td>${dateToPay}</td>
+													</c:when>
+													<c:otherwise>
+														<td>Cobre o mancebo!</td>
+													</c:otherwise>
+												</c:choose>
+												<td>
+												<c:choose>
+													<c:when test="${not empty nextBeer.lat}">
+														<a href='javascript:void(0)' class="glyphicon glyphicon-map-marker" title="Mostrar no Mapa" onclick="reloadMap('${nextBeer.lat}','${nextBeer.lng}');"></a>
+													</c:when>
+												</c:choose>
+												</td>
+											</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<h3 align="left">Onde vai ser?</h3>
+								<br />
+								<div id="map-canvas" style="height: 300px; min-width: 200px"></div>
+							</div>
 						</div>
 						</c:if>
 					</sec:authorize>
 				</div>
+				</div>
+				</div>
 			</div>
+<script>
+var map;
+var markers = [];
+function initialize() {
+	var mapOptions = {
+		zoom: 12,
+		center: new google.maps.LatLng( -3.79096804186333,-38.50090965628624)
+	};
+	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+}
+function setMapOnAll(map) {
+	for (var i = 0; i < markers.length; i++) {
+		markers[i].setMap(map);
+	}
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+function reloadMap(lat, lng) {
+	setMapOnAll(null);
+	var marker = new google.maps.Marker({
+		position: new google.maps.LatLng(lat,lng), 
+		map: map,
+		zoom: 8,
+		title:"-no futuro, o nome do local aparecerá aqui. Hoje, perdoe, tá faltando!"
+	});
+	console.log("Yahoo" + lat + lng);
+	markers.push(marker);
+}
+</script>
 			<jsp:include page="footer.jsp" />
 		</div>
 	</div>

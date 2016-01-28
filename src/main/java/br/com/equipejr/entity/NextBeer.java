@@ -35,6 +35,12 @@ public class NextBeer {
 	@Column(nullable = false)
 	private String motivation;
 	
+	@Column(nullable = false)
+	private String lat;
+
+	@Column(nullable = false)
+	private String lng;
+	
 	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.DETACH)
 	private User payer;
 
@@ -84,6 +90,22 @@ public class NextBeer {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getLat() {
+		return lat;
+	}
+
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+
+	public String getLng() {
+		return lng;
+	}
+
+	public void setLng(String lng) {
+		this.lng = lng;
 	}
 
 }

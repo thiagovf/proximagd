@@ -66,7 +66,7 @@ public class SenderEmail {
 					InternetAddress.parse(sb.toString()));
 			message.setSubject("Nova grade");
 			message.setText(messageSB.toString());
-			Transport.send(message);
+//			Transport.send(message);
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
@@ -105,7 +105,7 @@ public class SenderEmail {
 					InternetAddress.parse(sb.toString()));
 			message.setSubject("Nova grade");
 			message.setText(messageSB.toString());
-			Transport.send(message);
+//			Transport.send(message);
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);

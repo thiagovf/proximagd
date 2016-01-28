@@ -51,6 +51,8 @@ public class NewBeerController {
 			@RequestParam(value="reason", required=true) String reason,
 			@RequestParam(value="user", required=true) String email,
 			@RequestParam(value="dateToPay", required=true) @DateTimeFormat(pattern="dd/MM/yy HH:mm") Calendar dateToPay,
+			@RequestParam(value="lat", required=true) String lat,
+			@RequestParam(value="lng", required=true) String lng,
 			HttpServletRequest request) {
 		
 		NextBeer nextBeer = new NextBeer();
@@ -62,6 +64,8 @@ public class NewBeerController {
 		nextBeer.setDate(Calendar.getInstance());
 		nextBeer.setMotivation(reason);
 		nextBeer.setPaid(false);
+		nextBeer.setLat(lat);
+		nextBeer.setLng(lng);
 
 		User user = userDAO.getUser(email);
 		nextBeer.setPayer(user);
