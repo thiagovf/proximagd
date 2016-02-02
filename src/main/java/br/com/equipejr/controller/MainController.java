@@ -28,10 +28,10 @@ public class MainController {
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			model.addObject("nextBeers", nextBeerDAO.getBeers(userDetail.getUsername()));
 			model.addObject("hasBeersWithoutDate", nextBeerDAO.hasBeersWithoutDate(userDetail.getUsername()));
-			NextBeer nextestBeer = nextBeerDAO.getNextBeer();
-			if (nextestBeer != null) {
-				model.addObject("dateToPayNextBeers", nextestBeer.getDateToPay());
-			}
+		}
+		NextBeer nextestBeer = nextBeerDAO.getNextBeer();
+		if (nextestBeer != null) {
+			model.addObject("dateToPayNextBeers", nextestBeer.getDateToPay());
 		}
 		model.addObject("allNextBeers", nextBeerDAO.getAllNextBeers());
 		

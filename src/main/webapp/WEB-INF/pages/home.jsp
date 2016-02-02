@@ -64,27 +64,27 @@ function saveTheDate(id) {
 			<div class="panel-body" align="center">
 				<div class="container " style="margin-top: 10%; margin-bottom: 10%;">
 				<div class="col-xs-12">
+					<c:if test="${dateToPayNextBeers != null}">
+						<h2 id="cntdwn">
+						<fmt:formatDate value="${dateToPayNextBeers.time}" pattern="MM/dd/yyyy hh:mm a" var="dateToPayNextBeer" />
+						<input id="next" type="hidden" value="${dateToPayNextBeer}" />
+						<script language="JavaScript">
+							//TargetDate = "12/31/2020 5:00 AM";
+							TargetDate = jQuery('#next').val();
+							BackColor = "palegreen";
+							ForeColor = "navy";
+							CountActive = true;
+							CountStepper = -1;
+							LeadingZero = true;
+							DisplayFormat = "Faltam %%D%% Dias, %%H%% Horas, %%M%% Minutos, %%S%% Segundos para próxima grade!";
+							FinishMessage = "É hoje, menino!";
+						</script>
+						<script language="JavaScript" src="static/js/countdown.js"></script>
+						</h2>
+					</c:if>
 					<sec:authorize
 						access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
 						<div class="col-lg-12">
-						<c:if test="${dateToPayNextBeers != null}">
-							<h2 id="cntdwn">
-							<fmt:formatDate value="${dateToPayNextBeers.time}" pattern="MM/dd/yyyy hh:mm a" var="dateToPayNextBeer" />
-							<input id="next" type="hidden" value="${dateToPayNextBeer}" />
-							<script language="JavaScript">
-								//TargetDate = "12/31/2020 5:00 AM";
-								TargetDate = jQuery('#next').val();
-								BackColor = "palegreen";
-								ForeColor = "navy";
-								CountActive = true;
-								CountStepper = -1;
-								LeadingZero = true;
-								DisplayFormat = "Faltam %%D%% Dias, %%H%% Horas, %%M%% Minutos, %%S%% Segundos para próxima grade!";
-								FinishMessage = "É hoje, menino!";
-							</script>
-							<script language="JavaScript" src="static/js/countdown.js"></script>
-							</h2>
-						</c:if>
 						<c:choose>
 							<c:when test="${hasBeersWithoutDate}">
 								<div align="left">
