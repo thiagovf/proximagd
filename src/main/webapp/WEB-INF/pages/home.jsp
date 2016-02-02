@@ -173,62 +173,62 @@ function saveTheDate(id) {
 						</c:if>
 						</div>
 
-						<c:if test="${not empty allNextBeers}">
-						<div class="col-lg-12">
-							<div class="col-lg-6">
-								<div>
-								<h3 align="left">Grades a serem pagas</h3>
-								</div>
-								<div class="table-responsive" style="min-width: 200px;">
-									<table class="table">
-										<thead>
-											<tr>
-												<th>Devedor</th>
-												<th>Data do Registro</th>
-												<th>Motivo da Grade</th>
-												<th>Email</th>
-												<th>Previsão Pagamento</th>
-												<th></th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:forEach items="${allNextBeers}" var="nextBeer">
-											<tr>
-												<td>${nextBeer.payer.name}</td>
-												<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy HH:mm" var="date" />
-												<td>${date}</td>
-												<td>${nextBeer.motivation}</td>
-												<td>${nextBeer.payer.email}</td>
-												<c:choose>
-													<c:when test="${not empty nextBeer.dateToPay}">
-														<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
-														<td>${dateToPay}</td>
-													</c:when>
-													<c:otherwise>
-														<td>Cobre o mancebo!</td>
-													</c:otherwise>
-												</c:choose>
-												<td>
-												<c:choose>
-													<c:when test="${not empty nextBeer.lat}">
-														<a href='javascript:void(0)' class="glyphicon glyphicon-map-marker" title="Mostrar no Mapa" onclick="reloadMap('${nextBeer.lat}','${nextBeer.lng}');"></a>
-													</c:when>
-												</c:choose>
-												</td>
-											</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<h3 align="left">Onde vai ser?</h3>
-								<br />
-								<div id="map-canvas" style="height: 300px; min-width: 200px"></div>
-							</div>
-						</div>
-						</c:if>
 					</sec:authorize>
+				<c:if test="${not empty allNextBeers}">
+				<div class="col-lg-12">
+					<div class="col-lg-6">
+						<div>
+						<h3 align="left">Grades a serem pagas</h3>
+						</div>
+						<div class="table-responsive" style="min-width: 200px;">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Devedor</th>
+										<th>Data do Registro</th>
+										<th>Motivo da Grade</th>
+										<th>Email</th>
+										<th>Previsão Pagamento</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${allNextBeers}" var="nextBeer">
+									<tr>
+										<td>${nextBeer.payer.name}</td>
+										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy HH:mm" var="date" />
+										<td>${date}</td>
+										<td>${nextBeer.motivation}</td>
+										<td>${nextBeer.payer.email}</td>
+										<c:choose>
+											<c:when test="${not empty nextBeer.dateToPay}">
+												<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
+												<td>${dateToPay}</td>
+											</c:when>
+											<c:otherwise>
+												<td>Cobre o mancebo!</td>
+											</c:otherwise>
+										</c:choose>
+										<td>
+										<c:choose>
+											<c:when test="${not empty nextBeer.lat}">
+												<a href='javascript:void(0)' class="glyphicon glyphicon-map-marker" title="Mostrar no Mapa" onclick="reloadMap('${nextBeer.lat}','${nextBeer.lng}');"></a>
+											</c:when>
+										</c:choose>
+										</td>
+									</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<h3 align="left">Onde vai ser?</h3>
+						<br />
+						<div id="map-canvas" style="height: 300px; min-width: 200px"></div>
+					</div>
+				</div>
+				</c:if>
 				</div>
 				</div>
 				</div>

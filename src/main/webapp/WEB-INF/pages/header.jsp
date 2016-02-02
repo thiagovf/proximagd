@@ -28,12 +28,7 @@
 				<li><a href="${context}/welcome">Home</a></li>
 				<li><a href="${context}/about">Sobre</a></li>
 				<li><a href="${context}/contact">Contato</a></li>
-				<sec:authorize access="hasRole('ROLE_NORMAL') and !hasRole('ROLE_ADMIN')">
-					<li><a href="${context}/newbeer/register" style="color:white">«Ofereça uma grade»</a></li>
-				</sec:authorize>
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<li><a href="${context}/newbeer/register" style="color:white">«Cadastre uma grade»</a></li>
-				</sec:authorize>
+				<li><a href="${context}/newbeer/register" style="color:white">«Ofereça uma grade»</a></li>
 			</ul>
 			<sec:authorize access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
 				<div align="right">

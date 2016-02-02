@@ -28,14 +28,12 @@ public class MainController {
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			model.addObject("nextBeers", nextBeerDAO.getBeers(userDetail.getUsername()));
 			model.addObject("hasBeersWithoutDate", nextBeerDAO.hasBeersWithoutDate(userDetail.getUsername()));
-			model.addObject("allNextBeers", nextBeerDAO.getAllNextBeers());
 			NextBeer nextestBeer = nextBeerDAO.getNextBeer();
 			if (nextestBeer != null) {
 				model.addObject("dateToPayNextBeers", nextestBeer.getDateToPay());
 			}
 		}
-		model.addObject("title", "Spring Security Login Form - Database Authentication");
-		model.addObject("message", "This is default page!");
+		model.addObject("allNextBeers", nextBeerDAO.getAllNextBeers());
 		
 		model.setViewName("home");
 		return model;
