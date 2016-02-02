@@ -15,7 +15,9 @@
 <script type="text/javascript" src="${context}/static/js/jquery.js"></script>
 <script type="text/javascript" src="${context}/static/js/jquery.datetimepicker.full.js"></script>
 <script type="text/javascript" src="${context}/static/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${context}/static/js/googleMaps.js"></script>
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI_bhav_kkwMeVjmacrrNLf2Wc8FT8VT8&callback=initMap">
+</script>
 
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 <script>
