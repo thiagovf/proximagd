@@ -21,20 +21,17 @@
 			<jsp:include page="header.jsp" />
 			<div class="panel-body" align="center">
 				<div class="container " style="margin-top: 10%; margin-bottom: 10%;">
-					<sec:authorize
-						access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
-						<h2>Missão: tornar o controle de grade mais transparente e preciso.</h2>
-						<hr>
-						<h1>Regras</h1>
-						<h2>São motivos para automático cadastro de novas grades:</h2>
-						<ul>
-						<li>Promoção no emprego;</li>
-						<li>Mudança de emprego;</li>
-						<li>Fechamento de novo projeto autonomo;</li>
-						</ul>
-						<h2>Cobrança de juros</h2>
-						<p>Pedente definição dos critérios de cobrança de juros.</p>
-					</sec:authorize>
+					<h2>Missão: tornar o controle de grade mais transparente e preciso.</h2>
+					<hr>
+					<h1>Regras</h1>
+					<h2>São motivos para automático cadastro de novas grades:</h2>
+					<ul>
+					<li>Promoção no emprego;</li>
+					<li>Mudança de emprego;</li>
+					<li>Fechamento de novo projeto autonomo;</li>
+					</ul>
+					<h2>Cobrança de juros</h2>
+					<p>Pedente definição dos critérios de cobrança de juros.</p>
 				</div>
 			</div>
 			<jsp:include page="footer.jsp" />

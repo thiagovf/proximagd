@@ -1,5 +1,7 @@
 package br.com.equipejr.controller;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,14 +30,20 @@ public class MainController {
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			model.addObject("nextBeers", nextBeerDAO.getBeers(userDetail.getUsername()));
 			model.addObject("hasBeersWithoutDate", nextBeerDAO.hasBeersWithoutDate(userDetail.getUsername()));
+			model.setViewName("homeLogged");
+		} else {
+			model.setViewName("home");
 		}
 		NextBeer nextestBeer = nextBeerDAO.getNextBeer();
-		if (nextestBeer != null) {
+		Calendar today = Calendar.getInstance();
+		today.set(Calendar.HOUR_OF_DAY, 23);
+		today.set(Calendar.MINUTE, 59);
+		if (nextestBeer != null && today.before(nextestBeer.getDateToPay())) {
 			model.addObject("dateToPayNextBeers", nextestBeer.getDateToPay());
 		}
 		model.addObject("allNextBeers", nextBeerDAO.getAllNextBeers());
 		
-		model.setViewName("home");
+		
 		return model;
 
 	}

@@ -21,10 +21,7 @@
 			<jsp:include page="header.jsp" />
 			<div class="panel-body" align="center">
 				<div class="container " style="margin-top: 10%; margin-bottom: 10%;">
-					<sec:authorize
-						access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
-						<h2>thiagu.vf@gmail.com</h2>
-					</sec:authorize>
+					<h2>thiagu.vf@gmail.com</h2>
 				</div>
 			</div>
 			<jsp:include page="footer.jsp" />
