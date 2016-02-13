@@ -16,7 +16,9 @@
 	<script type="text/javascript" src="${context}/static/js/jquery.js" ></script>
 	<script type="text/javascript" src="${context}/static/js/jquery.datetimepicker.full.js"></script>
 	<script type="text/javascript" src="${context}/static/js/bootstrap.min.js"></script>
-	<script language="JavaScript" src="${context}/static/js/countdown.js"></script>
+	<c:if test="${dateToPayNextBeers != null}">
+		<script language="JavaScript" src="${context}/static/js/countdown.js"></script>
+	</c:if>
 	<script async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI_bhav_kkwMeVjmacrrNLf2Wc8FT8VT8&callback=initMap">
 	</script>
@@ -176,7 +178,7 @@ function saveTheDate(id) {
 					</sec:authorize>
 				<c:if test="${not empty allNextBeers}">
 				<div class="col-lg-12">
-					<div class="col-lg-8">
+					<div class="col-lg-12">
 						<div>
 						<h3 align="left">Grades a serem pagas</h3>
 						</div>
@@ -222,11 +224,11 @@ function saveTheDate(id) {
 							</table>
 						</div>
 					</div>
-					<div class="col-lg-4">
+					<!-- <div class="col-lg-4">
 						<h3 align="left">Onde vai ser?</h3>
 						<br />
 						<div id="map-canvas" style="height: 200px; min-width: 300px"></div>
-					</div>
+					</div>-->
 				</div>
 				</c:if>
 				</div>
@@ -234,7 +236,7 @@ function saveTheDate(id) {
 				</div>
 			</div>
 <script>
-var map;
+/*var map;
 var markers = [];
 function initialize() {
 	var mapOptions = {
@@ -259,7 +261,7 @@ function reloadMap(lat, lng) {
 	});
 	console.log("Yahoo" + lat + lng);
 	markers.push(marker);
-}
+}*/
 </script>
 			<jsp:include page="footer.jsp" />
 		</div>

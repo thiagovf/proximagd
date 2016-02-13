@@ -82,12 +82,12 @@ jQuery(function() {
 									<input id="datepicker" type="text" name="dateToPay" >
 								</div>
 							</div>
-							<div class="col-lg-6">
+							<!--<div class="col-lg-6">
 								<label>Selecione o local da grade</label> 
 								<div id="map-canvas" style="height: 300px; min-width: 200px"></div>
 								<input type="hidden" name="lat" id="lat">
 								<input type="hidden" name="lng" id="lng">
-							</div>
+							</div>-->
 							</div>
 							<div class="col-lg-12">
 							<hr />
@@ -103,7 +103,7 @@ jQuery(function() {
 		</div>
 	</div>
 <script>
-var map;
+/*var map;
 function initialize() {
 	var markers = [];
 	var mapOptions = {
@@ -118,13 +118,13 @@ function initialize() {
 	});
 	jQuery('#lat').val(-3.79096804186333);
 	jQuery('#lng').val(-38.50090965628624);
-	markers.push(marker);
+	markers.push(marker);*/
   /*  marker.addListener('click', function() {
 	  console.log("yahoo");
 	    map.setZoom(8);
 	    map.setCenter(marker.getPosition());
 	  });*/
-	map.addListener('click', function(event) {
+	/*map.addListener('click', function(event) {
 		setMapOnAll(null);
 		var marker = new google.maps.Marker({
 			
@@ -143,7 +143,7 @@ function initialize() {
 	}
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', initialize);*/
 </script>
 </BODY>
 </HTML>
