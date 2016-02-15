@@ -161,7 +161,7 @@ function reloadMap(lat, lng) {
 		position: new google.maps.LatLng(lat,lng), 
 		map: map,
 		zoom: 14,
-		title:"-no futuro, o nome do local aparecerá aqui. Hoje, perdoe, tá faltando!"
+		title:"-no futuro, o nome do local aparecerá aqui. Hoje, perdoe, tá faltand2o!"
 	});
 	markers.push(marker);
 	map.setCenter(new google.maps.LatLng(lat, lng));
