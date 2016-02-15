@@ -55,8 +55,6 @@ jQuery(function() {
 					<sec:authorize access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">
 						
 						<form name="newbeer" action="save" method='POST' class="form">
-							<div class="col-lg-12">
-							<div class="col-xs-12">
 							<div class="col-lg-6">
 								<sec:authorize access="hasRole('ROLE_ADMIN')">
 									<label for="user">Usuário</label> 
@@ -88,12 +86,10 @@ jQuery(function() {
 								<input type="hidden" name="lat" id="lat">
 								<input type="hidden" name="lng" id="lng">
 							</div>
-							</div>
 							<div class="col-lg-12">
 							<hr />
 								<button type="submit" class="btn btn-success btn-group-lg" >Salvar</button>
 								<a href="${context}/welcome" class="btn btn-danger" >Cancelar</a>
-							</div>
 							</div>
 						</form>
 					</sec:authorize>
