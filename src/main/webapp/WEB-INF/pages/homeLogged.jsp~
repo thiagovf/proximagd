@@ -259,7 +259,6 @@ function reloadMap(lat, lng) {
 	});
 	console.log("Yahoo" + lat + lng);
 	markers.push(marker);
-	map.setCenter(new google.maps.LatLng(lat, lng));
 }
 </script>
 			<jsp:include page="footer.jsp" />
