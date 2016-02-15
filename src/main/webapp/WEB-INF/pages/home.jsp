@@ -154,7 +154,7 @@ function setMapOnAll(map) {
 		markers[i].setMap(map);
 	}
 }
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'page:load', initialize);
 function reloadMap(lat, lng) {
 	setMapOnAll(null);
 	var marker = new google.maps.Marker({
@@ -163,8 +163,8 @@ function reloadMap(lat, lng) {
 		zoom: 14,
 		title:"-no futuro, o nome do local aparecerá aqui. Hoje, perdoe, tá faltando!"
 	});
-	console.log("Yahoo" + lat + lng);
 	markers.push(marker);
+	map.setCenter(new google.maps.LatLng(lat, lng));
 }
 </script>
 			<jsp:include page="footer.jsp" />
