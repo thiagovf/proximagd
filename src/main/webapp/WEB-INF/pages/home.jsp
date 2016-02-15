@@ -154,7 +154,7 @@ function setMapOnAll(map) {
 		markers[i].setMap(map);
 	}
 }
-google.maps.event.addDomListener(window, 'page:load', initialize);
+google.maps.event.addDomListener(window, 'load', initialize);
 function reloadMap(lat, lng) {
 	setMapOnAll(null);
 	var marker = new google.maps.Marker({
