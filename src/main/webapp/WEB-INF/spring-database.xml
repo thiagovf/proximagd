@@ -21,7 +21,7 @@
 	</bean>-->
 	<!-- <bean id="dataSource_security_hsqldb" class="org.springframework.jndi.JndiObjectFactoryBean"> 
 		<property name="jndiName" value="java:/comp/env/jdbc/proximagrade" /> </bean> -->
-	<bean id="dataSource_security_hsqldb" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+	 <bean id="dataSource_security_hsqldb" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" /> <property 
 		name="url" value="jdbc:mysql://127.3.73.2:3306/proximagrade" /> <property 
 		name="username" value="admintZ3itBW" /> <property name="password" value="ElUiYVKW1z1r" 

@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	version="2.1">
- 	<persistence-unit name="equipePU">
+	<persistence-unit name="equipePU">
 		<class>br.com.equipejr.entity.User</class>
 		<class>br.com.equipejr.entity.Role</class>
 		<class>br.com.equipejr.entity.NextBeer</class>

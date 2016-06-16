@@ -18,7 +18,7 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="${context}/welcome">
-				<img src="${context}/static/images/beer.jpg" alt="" height="50" width="60">
+				<img src="${context}/static/images/cf3e30d6-35e7-4f52-bfd9-f28a938f24d4.jpg" alt="" height="60" width="60" style="border: 1px solid rgb(0, 0, 0);">
 			</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -26,8 +26,8 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="${context}/welcome">Home</a></li>
-				<li><a href="${context}/about">Sobre</a></li>
-				<li><a href="${context}/contact">Contato</a></li>
+				<!-- <li><a href="${context}/about">Sobre</a></li>
+				<li><a href="${context}/contact">Contato</a></li>-->
 				<li><a href="${context}/newbeer/register" style="color:white">«Ofereça uma grade»</a></li>
 			</ul>
 			<sec:authorize access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">

@@ -10,14 +10,18 @@
 <HEAD>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-	<link rel='stylesheet' href='${context}/static/css/bootstrap.min.css'>
-	<link rel='stylesheet' href='${context}/static/css/jquery.datetimepicker.css'>
-	<link rel='stylesheet' href='${context}/static/css/home.css'>
-	<script type="text/javascript" src="${context}/static/js/jquery.js" ></script>
-	<script type="text/javascript" src="${context}/static/js/jquery.datetimepicker.full.js"></script>
-	<script type="text/javascript" src="${context}/static/js/bootstrap.min.js"></script>
-	<script language="JavaScript" src="${context}/static/js/countdown.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI_bhav_kkwMeVjmacrrNLf2Wc8FT8VT8&callback=initMap">
+<link rel='stylesheet' href='${context}/static/css/bootstrap.min.css'>
+<link rel='stylesheet'
+	href='${context}/static/css/jquery.datetimepicker.css'>
+<link rel='stylesheet' href='${context}/static/css/home.css'>
+<script type="text/javascript" src="${context}/static/js/jquery.js"></script>
+<script type="text/javascript"
+	src="${context}/static/js/jquery.datetimepicker.full.js"></script>
+<script type="text/javascript"
+	src="${context}/static/js/bootstrap.min.js"></script>
+<script language="JavaScript" src="${context}/static/js/countdown.js"></script>
+<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI_bhav_kkwMeVjmacrrNLf2Wc8FT8VT8&callback=initMap">
 	</script>
 <script>
 
@@ -62,12 +66,13 @@ function saveTheDate(id) {
 			<jsp:include page="header.jsp" />
 			<div class="panel-body" align="center">
 				<div class="container " style="margin-top: 10%; margin-bottom: 10%;">
-				<div class="col-xs-12">
-					<c:if test="${dateToPayNextBeers != null}">
-						<h2 id="cntdwn">
-						<fmt:formatDate value="${dateToPayNextBeers.time}" pattern="MM/dd/yyyy hh:mm a" var="dateToPayNextBeer" />
-						<input id="next" type="hidden" value="${dateToPayNextBeer}" />
-						<script language="JavaScript">
+					<div class="col-xs-12">
+						<c:if test="${dateToPayNextBeers != null}">
+							<h2 id="cntdwn">
+								<fmt:formatDate value="${dateToPayNextBeers.time}"
+									pattern="MM/dd/yyyy hh:mm a" var="dateToPayNextBeer" />
+								<input id="next" type="hidden" value="${dateToPayNextBeer}" />
+								<script language="JavaScript">
 							//TargetDate = "12/31/2020 5:00 AM";
 							TargetDate = jQuery('#next').val();
 							BackColor = "palegreen";
@@ -78,67 +83,70 @@ function saveTheDate(id) {
 							DisplayFormat = "Faltam %%D%% Dias, %%H%% Horas, %%M%% Minutos, %%S%% Segundos para próxima grade!";
 							FinishMessage = "É hoje, menino!";
 						</script>
-						<script language="JavaScript" src="static/js/countdown.js"></script>
-						</h2>
-					</c:if>
-					<c:if test="${not empty allNextBeers}">
-					<div class="col-lg-12">
-						<div class="col-lg-8">
-							<div>
-							<h3 align="left">Grades a serem pagas</h3>
+								<script language="JavaScript" src="static/js/countdown.js"></script>
+							</h2>
+						</c:if>
+						<c:if test="${not empty allNextBeers}">
+							<div class="col-lg-12">
+								<div class="col-lg-8">
+									<div>
+										<h3 align="left">Grades a serem pagas</h3>
+									</div>
+									<div class="table-responsive" style="min-width: 200px;">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Devedor</th>
+													<th>Data do Registro</th>
+													<th>Motivo da Grade</th>
+													<th>Previsão Pagamento</th>
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:forEach items="${allNextBeers}" var="nextBeer">
+													<tr>
+														<td>${nextBeer.payer.name}</td>
+														<fmt:formatDate value="${nextBeer.date.time}"
+															pattern="dd/MM/yyyy" var="date" />
+														<td>${date}</td>
+														<td>${nextBeer.motivation}</td>
+														<c:choose>
+															<c:when test="${not empty nextBeer.dateToPay}">
+																<fmt:formatDate value="${nextBeer.dateToPay.time}"
+																	pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
+																<td>${dateToPay}</td>
+															</c:when>
+															<c:otherwise>
+																<td>Cobre o mancebo!</td>
+															</c:otherwise>
+														</c:choose>
+														<td><c:choose>
+																<c:when test="${not empty nextBeer.lat}">
+																	<a href='javascript:void(0)'
+																		class="glyphicon glyphicon-map-marker"
+																		title="Mostrar no Mapa"
+																		onclick="reloadMap('${nextBeer.lat}','${nextBeer.lng}');"></a>
+																</c:when>
+															</c:choose></td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<h3 align="left">Onde vai ser?</h3>
+									<br />
+									<div id="map-canvas" style="height: 200px; min-width: 300px"></div>
+								</div>
 							</div>
-							<div class="table-responsive" style="min-width: 200px;">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>Devedor</th>
-											<th>Data do Registro</th>
-											<th>Motivo da Grade</th>
-											<th>Previsão Pagamento</th>
-											<th></th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach items="${allNextBeers}" var="nextBeer">
-										<tr>
-											<td>${nextBeer.payer.name}</td>
-											<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy" var="date" />
-											<td>${date}</td>
-											<td>${nextBeer.motivation}</td>
-											<c:choose>
-												<c:when test="${not empty nextBeer.dateToPay}">
-													<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
-													<td>${dateToPay}</td>
-												</c:when>
-												<c:otherwise>
-													<td>Cobre o mancebo!</td>
-												</c:otherwise>
-											</c:choose>
-											<td>
-											<c:choose>
-												<c:when test="${not empty nextBeer.lat}">
-													<a href='javascript:void(0)' class="glyphicon glyphicon-map-marker" title="Mostrar no Mapa" onclick="reloadMap('${nextBeer.lat}','${nextBeer.lng}');"></a>
-												</c:when>
-											</c:choose>
-											</td>
-										</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div class="col-lg-4">
-							<h3 align="left">Onde vai ser?</h3>
-							<br />
-							<div id="map-canvas" style="height: 200px; min-width: 300px"></div>
-						</div>
+						</c:if>
 					</div>
-					</c:if>
-				</div>
-				</div>
 				</div>
 			</div>
-<script>
+		</div>
+		<script>
 var map;
 var markers = [];
 function initialize() {
@@ -166,8 +174,8 @@ function reloadMap(lat, lng) {
 	map.setCenter(new google.maps.LatLng(lat, lng));
 }
 </script>
-			<jsp:include page="footer.jsp" />
-		</div>
+		<jsp:include page="footer.jsp" />
+	</div>
 	</div>
 </BODY>
 </HTML>
