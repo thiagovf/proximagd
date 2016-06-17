@@ -28,6 +28,7 @@
 				<li><a href="${context}/">Home</a></li>
 				<!-- <li><a href="${context}/about">Sobre</a></li>
 				<li><a href="${context}/contact">Contato</a></li>-->
+				<li><a href="${context}/payed">Grades Pagas</a></li>
 				<li><a href="${context}/newbeer/register" style="color:white">«Ofereça uma grade»</a></li>
 			</ul>
 			<sec:authorize access="hasRole('ROLE_NORMAL') or hasRole('ROLE_ADMIN')">

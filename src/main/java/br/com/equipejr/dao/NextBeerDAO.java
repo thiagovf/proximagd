@@ -46,6 +46,12 @@ public class NextBeerDAO {
 		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<NextBeer> getAllPayedBeers() {
+		Query query = entityManager.createQuery("select n from NextBeer as n left join fetch n.payer as u where n.paid = true order by n.dateToPay");
+		return query.getResultList();
+	}
+
 	public NextBeer getNextBeer(Long id) {
 		Query query = entityManager.createQuery("select n from NextBeer as n where n.id = :id ");
 		query.setParameter("id", id);
