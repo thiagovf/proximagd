@@ -97,8 +97,8 @@ function saveTheDate(id) {
 											<thead>
 												<tr>
 													<th>Devedor</th>
-													<th>Data do Registro</th>
-													<th>Motivo da Grade</th>
+													<th class="hidden-xs hidden-sm">Data do Registro</th>
+													<th class="hidden-xs hidden-sm">Motivo da Grade</th>
 													<th>Previsão Pagamento</th>
 													<th></th>
 												</tr>
@@ -109,8 +109,8 @@ function saveTheDate(id) {
 														<td>${nextBeer.payer.name}</td>
 														<fmt:formatDate value="${nextBeer.date.time}"
 															pattern="dd/MM/yyyy" var="date" />
-														<td>${date}</td>
-														<td>${nextBeer.motivation}</td>
+														<td class="hidden-xs hidden-sm">${date}</td>
+														<td class="hidden-xs hidden-sm">${nextBeer.motivation}</td>
 														<c:choose>
 															<c:when test="${not empty nextBeer.dateToPay}">
 																<fmt:formatDate value="${nextBeer.dateToPay.time}"
@@ -118,7 +118,7 @@ function saveTheDate(id) {
 																<td>${dateToPay}</td>
 															</c:when>
 															<c:otherwise>
-																<td>Cobre o mancebo!</td>
+																<td style="color:red;">Data não definida.</td>
 															</c:otherwise>
 														</c:choose>
 														<td><c:choose>

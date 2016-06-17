@@ -111,8 +111,8 @@ function saveTheDate(id) {
 							<table class="table-condensed">
 								<thead>
 									<tr>
-										<th>Data do Registro</th>
-										<th>Motivo da Grade</th>
+										<th class="hidden-xs hidden-sm">Data do Registro</th>
+										<th class="hidden-xs hidden-sm">Motivo da Grade</th>
 										<th>Previsão Pagamento</th>
 									</tr>
 								</thead>
@@ -120,8 +120,8 @@ function saveTheDate(id) {
 									<c:forEach items="${nextBeers}" var="nextBeer">
 									<tr>
 										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy HH:mm" var="date" />
-										<td>${date}</td>
-										<td>${nextBeer.motivation}</td>
+										<td class="hidden-xs hidden-sm">${date}</td>
+										<td class="hidden-xs hidden-sm">${nextBeer.motivation}</td>
 										
 										<c:choose>
 											<c:when test="${not empty nextBeer.dateToPay and now.daysBetweenDates(nextBeer.dateToPay) > 14}">
@@ -184,9 +184,8 @@ function saveTheDate(id) {
 								<thead>
 									<tr>
 										<th>Devedor</th>
-										<th>Data do Registro</th>
-										<th>Motivo da Grade</th>
-										<th>Email</th>
+										<th class="hidden-xs hidden-sm">Data do Registro</th>
+										<th class="hidden-xs hidden-sm">Motivo da Grade</th>
 										<th>Previsão Pagamento</th>
 										<th></th>
 									</tr>
@@ -196,16 +195,15 @@ function saveTheDate(id) {
 									<tr>
 										<td>${nextBeer.payer.name}</td>
 										<fmt:formatDate value="${nextBeer.date.time}" pattern="dd/MM/yyyy HH:mm" var="date" />
-										<td>${date}</td>
-										<td>${nextBeer.motivation}</td>
-										<td>${nextBeer.payer.email}</td>
+										<td class="hidden-xs hidden-sm">${date}</td>
+										<td class="hidden-xs hidden-sm">${nextBeer.motivation}</td>
 										<c:choose>
 											<c:when test="${not empty nextBeer.dateToPay}">
 												<fmt:formatDate value="${nextBeer.dateToPay.time}" pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
 												<td>${dateToPay}</td>
 											</c:when>
 											<c:otherwise>
-												<td>Cobre o mancebo!</td>
+												<td style="color:red;">Data não definida.</td>
 											</c:otherwise>
 										</c:choose>
 										<td>
