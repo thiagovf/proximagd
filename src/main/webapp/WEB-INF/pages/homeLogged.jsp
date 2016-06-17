@@ -221,7 +221,7 @@ function saveTheDate(id) {
 							</table>
 						</div>
 					</div>
-					<div class="col-lg-4">
+					<div class="col-lg-4" style="border-left: 3px solid #DAE; height: 336px;">
 						<h3 align="left">Onde vai ser?</h3>
 						<br />
 						<div id="map-canvas" style="height: 200px; min-width: 300px"></div>
