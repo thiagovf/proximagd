@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	version="2.1">
-	<!-- <persistence-unit name="equipePU">
+	<persistence-unit name="equipePU">
 		<class>br.com.equipejr.entity.User</class>
 		<class>br.com.equipejr.entity.Role</class>
 		<class>br.com.equipejr.entity.NextBeer</class>
@@ -16,8 +16,8 @@
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 		</properties>
-	</persistence-unit>-->
-	<persistence-unit name="equipePU">
+	</persistence-unit>
+	<!--<persistence-unit name="equipePU">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<class>br.com.equipejr.entity.User</class>
@@ -37,6 +37,6 @@
 
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 		</properties>
-	</persistence-unit>
+	</persistence-unit>-->
 
 </persistence>
