@@ -43,8 +43,8 @@ public class UserDAO {
 		 * SELECT U.NAME FROM USER U WHERE U.ID NOT IN (SELECT NB.PAYER_ID FROM
 		 * NEXT_BEER NB) AND U.ENABLED = 1;
 		 */
-		hql.append("select u.name from User as u where u.id not in (select nb.payer.id");
-		hql.append("from NextBeer as nb) and u.enabled = 1 order by u.email");
+		hql.append(" select u.name from User as u where u.id not in (select nb.payer.id ");
+		hql.append(" from NextBeer as nb) and u.enabled = 1 order by u.email ");
 
 		Query query = manager.createQuery(hql.toString());
 		return query.getResultList();
