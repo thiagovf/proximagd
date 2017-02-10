@@ -21,7 +21,7 @@
 			<jsp:include page="header.jsp" />
 			<div class="panel-body" align="center">
 				<div class="container " style="margin-top: 10%; margin-bottom: 10%;">
-					<h2>Missão: tornar o controle de grade mais transparente e preciso.</h2>
+					<h2>Missão: tornar transparente o controle das grades de cerveja.</h2>
 					<hr>
 					<h1>Regras</h1>
 					<h2>São motivos para automático cadastro de novas grades:</h2>

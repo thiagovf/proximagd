@@ -16,20 +16,30 @@ public class UserDAO {
 
 	private EntityManagerFactory factory = Persistence.createEntityManagerFactory("equipePU");
 	private EntityManager manager;
-	
+
 	public User getUser(String email) {
 		manager = factory.createEntityManager();
 		Query query = manager.createQuery("select u from User as u where u.email = :email ");
 		query.setParameter("email", email);
-		
-		return (User)query.getSingleResult();
+
+		return (User) query.getSingleResult();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<String> getAllUserMails() {
 		manager = factory.createEntityManager();
 		Query query = manager.createQuery("select u.email from User as u order by u.email");
-		
+
+		return query.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<String> getAllNeverPromised() {
+		manager = factory.createEntityManager();
+		// SELECT U.NAME FROM USER U WHERE U.ID NOT IN (SELECT NB.PAYER_ID FROM
+		// NEXT_BEER NB) AND U.ENABLED = 1;
+		Query query = manager.createQuery(
+				"select u.name from User as u where u.id not in (select nb.payer.id from NextBeer as nb) and u.enabled = 1 order by u.email");
 		return query.getResultList();
 	}
 }
