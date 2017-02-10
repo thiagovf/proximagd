@@ -143,7 +143,7 @@ var map;
 var markers = [];
 function initialize() {
 	var mapOptions = {
-		zoom: 12,
+		zoom: 18,
 		center: new google.maps.LatLng( -3.79096804186333,-38.50090965628624)
 	};
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -159,7 +159,7 @@ function reloadMap(lat, lng) {
 	var marker = new google.maps.Marker({
 		position: new google.maps.LatLng(lat,lng), 
 		map: map,
-		zoom: 14,
+		zoom: 18,
 		title:"-no futuro, o nome do local aparecerá aqui. Hoje, perdoe, tá faltando!"
 	});
 	markers.push(marker);

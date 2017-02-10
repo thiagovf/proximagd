@@ -17,7 +17,7 @@
 <script type="text/javascript" src="${context}/static/js/jquery.js"></script>
 <script type="text/javascript"
 	src="${context}/static/js/bootstrap.min.js"></script>
-<TITLE>Lista de Eunucos</TITLE>
+<TITLE>Lista de Suvinos</TITLE>
 </HEAD>
 <BODY>
 	<div class="container-fluid">

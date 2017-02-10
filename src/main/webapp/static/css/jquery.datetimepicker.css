@@ -105,6 +105,7 @@
 .xdsoft_datetimepicker .xdsoft_mounthpicker {
 	position: relative;
 	text-align: center;
+	z-index: 1;
 }
 
 .xdsoft_datetimepicker .xdsoft_label i,

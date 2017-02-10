@@ -76,7 +76,8 @@ jQuery(function() {
 									<textarea class="form-control" name="reason" id="reasonIn"></textarea>
 								</div>
 								<div>
-									<input id="datepicker" type="text" name="dateToPay" >
+									<label class="col-lg-12" for="datepicker">Previsão de Data</label> 
+									<input class="col-lg-12" id="datepicker" type="text" name="dateToPay" >
 								</div>
 							</div>
 							<div class="col-lg-6">
