@@ -25,7 +25,7 @@ public class NextBeerDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<NextBeer> getBeers(String email) {
-		Query query = entityManager.createQuery("select n from User as u left join u.nextBeers as n where u.email = :email and n.paid = false order by n.dateToPay");
+		Query query = entityManager.createQuery("select n from User as u left join u.nextBeers as n where u.email = :email and n.paid = false order by n.dateToPay desc");
 		query.setParameter("email", email);
 		return query.getResultList();
 	}
@@ -42,13 +42,13 @@ public class NextBeerDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<NextBeer> getAllNextBeers() {
-		Query query = entityManager.createQuery("select n from NextBeer as n left join fetch n.payer as u where n.paid = false order by case when n.dateToPay is null then 1 else 0 end, n.dateToPay ");
+		Query query = entityManager.createQuery("select n from NextBeer as n left join fetch n.payer as u where n.paid = false order by case when n.dateToPay is null then 1 else 0 end, n.dateToPay desc");
 		return query.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<NextBeer> getAllPayedBeers() {
-		Query query = entityManager.createQuery("select n from NextBeer as n left join fetch n.payer as u where n.paid = true order by case when n.dateToPay is null then 1 else 0 end, n.dateToPay");
+		Query query = entityManager.createQuery("select n from NextBeer as n left join fetch n.payer as u where n.paid = true order by case when n.dateToPay is null then 1 else 0 end, n.dateToPay desc");
 		return query.getResultList();
 	}
 
