@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.equipejr.dao.NextBeerDAO;
 import br.com.equipejr.dao.UserDAO;
-import br.com.equipejr.email.SenderEmail;
 import br.com.equipejr.entity.NextBeer;
 import br.com.equipejr.entity.User;
 
@@ -56,9 +55,7 @@ public class NewBeerController {
 			HttpServletRequest request) {
 		
 		NextBeer nextBeer = new NextBeer();
-		if (request.getParameter("checkDate") != null && dateToPay == null) {
-			nextBeer.setDateToPay(Calendar.getInstance());
-		} else if (request.getParameter("checkDate") != null) {
+		if (dateToPay != null) {
 			nextBeer.setDateToPay(dateToPay);
 		}
 		nextBeer.setDate(Calendar.getInstance());
@@ -71,11 +68,11 @@ public class NewBeerController {
 		nextBeer.setPayer(user);
 
 		nextBeerDAO.save(nextBeer);
-		try {
-			SenderEmail.sendNewNextBeer(userDAO.getAllUserMails(), nextBeer);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			SenderEmail.sendNewNextBeer(userDAO.getAllUserMails(), nextBeer);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		ModelAndView model = new ModelAndView();
 		model.setViewName("thanks");
 		return model;

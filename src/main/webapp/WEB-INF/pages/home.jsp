@@ -11,18 +11,13 @@
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <link rel='stylesheet' href='${context}/static/css/bootstrap.min.css'>
-<link rel='stylesheet'
-	href='${context}/static/css/jquery.datetimepicker.css'>
+<link rel='stylesheet' href='${context}/static/css/jquery.datetimepicker.css'>
 <link rel='stylesheet' href='${context}/static/css/home.css'>
 <script type="text/javascript" src="${context}/static/js/jquery.js"></script>
-<script type="text/javascript"
-	src="${context}/static/js/jquery.datetimepicker.full.js"></script>
-<script type="text/javascript"
-	src="${context}/static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${context}/static/js/jquery.datetimepicker.full.js"></script>
+<script type="text/javascript" src="${context}/static/js/bootstrap.min.js"></script>
 <script language="JavaScript" src="${context}/static/js/countdown.js"></script>
-<script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI_bhav_kkwMeVjmacrrNLf2Wc8FT8VT8&callback=initMap">
-	</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI_bhav_kkwMeVjmacrrNLf2Wc8FT8VT8&callback=initMap"></script>
 <script>
 
 function showDatepicker(id){
@@ -47,10 +42,6 @@ function saveTheDate(id) {
 			dataType: "json", 
 			data:{id, date}
 		}).complete(function(data) {
-			//jQuery("#agendar" + id).hide();
-			//jQuery("#datepicker" + id).hide();
-			//jQuery("#saveTheDate" + id).hide();
-			//jQuery("#dateToPay" + id).html(date);
 			window.location.reload(true);
 		});
 	} else {
@@ -118,7 +109,7 @@ function saveTheDate(id) {
 																<td>${dateToPay}</td>
 															</c:when>
 															<c:otherwise>
-																<td style="color:red;">Data não definida.</td>
+																<td style="color: red;">Data não definida.</td>
 															</c:otherwise>
 														</c:choose>
 														<td><c:choose>
@@ -135,7 +126,8 @@ function saveTheDate(id) {
 										</table>
 									</div>
 								</div>
-								<div class="col-lg-4" style="border-left: 3px solid #DAE; height: 336px;">
+								<div class="col-lg-4"
+									style="border-left: 3px solid #DAE; height: 336px;">
 									<h3 align="left">Onde vai ser?</h3>
 									<br />
 									<div id="map-canvas" style="height: 200px; min-width: 300px"></div>
@@ -146,7 +138,7 @@ function saveTheDate(id) {
 				</div>
 			</div>
 		</div>
-		<script>
+<script>
 var map;
 var markers = [];
 function initialize() {
@@ -168,7 +160,7 @@ function reloadMap(lat, lng) {
 		position: new google.maps.LatLng(lat,lng), 
 		map: map,
 		zoom: 14,
-		title:"-no futuro, o nome do local aparecerá aqui. Hoje, perdoe, tá faltand2o!"
+		title:"-no futuro, o nome do local aparecerá aqui. Hoje, perdoe, tá faltando!"
 	});
 	markers.push(marker);
 	map.setCenter(new google.maps.LatLng(lat, lng));

@@ -17,8 +17,7 @@
 	<script type="text/javascript" src="${context}/static/js/jquery.datetimepicker.full.js"></script>
 	<script type="text/javascript" src="${context}/static/js/bootstrap.min.js"></script>
 	<script language="JavaScript" src="${context}/static/js/countdown.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI_bhav_kkwMeVjmacrrNLf2Wc8FT8VT8&callback=initMap">
-	</script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI_bhav_kkwMeVjmacrrNLf2Wc8FT8VT8&callback=initMap"></script>
 <script>
 
 function showDatepicker(id){
@@ -43,10 +42,6 @@ function saveTheDate(id) {
 			dataType: "json", 
 			data:{id, date}
 		}).complete(function(data) {
-			//jQuery("#agendar" + id).hide();
-			//jQuery("#datepicker" + id).hide();
-			//jQuery("#saveTheDate" + id).hide();
-			//jQuery("#dateToPay" + id).html(date);
 			window.location.reload(true);
 		});
 	} else {
@@ -254,7 +249,6 @@ function reloadMap(lat, lng) {
 		zoom: 8,
 		title:"-no futuro, o nome do local aparecerá aqui. Hoje, perdoe, tá faltando!"
 	});
-	console.log("Yahoo" + lat + lng);
 	markers.push(marker);
 	map.setCenter(new google.maps.LatLng(lat, lng));
 }
