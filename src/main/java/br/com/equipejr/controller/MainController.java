@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,9 +21,10 @@ import br.com.equipejr.entity.NextBeer;
 public class MainController {
 
 	@Autowired
-	NextBeerDAO nextBeerDAO;
+	private NextBeerDAO nextBeerDAO;
 	
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+	@Transactional
 	public ModelAndView defaultPage() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		ModelAndView model = new ModelAndView();

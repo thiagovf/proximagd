@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,12 +26,13 @@ import br.com.equipejr.entity.User;
 public class NewBeerController {
 
 	@Autowired
-	NextBeerDAO nextBeerDAO;
+	private NextBeerDAO nextBeerDAO;
 	
 	@Autowired
-	UserDAO userDAO;
+	private UserDAO userDAO;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	@Transactional
 	public ModelAndView requestNewBeer() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
@@ -46,6 +48,7 @@ public class NewBeerController {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@Transactional
 	public ModelAndView saveNewBeer(
 			@RequestParam(value="reason", required=true) String reason,
 			@RequestParam(value="user", required=true) String email,
