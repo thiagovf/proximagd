@@ -14,7 +14,7 @@
 
 	<bean name="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource_security_hsqldb" />
+		<property name="dataSource" ref="dataSource_spring" />
 		<property name="packagesToScan" value="br.com.equipejr.entity" />
 	</bean>
 
@@ -23,7 +23,7 @@
 		<property name="location" value="/WEB-INF/data-source.properties" />
 	</bean>
 
-	<bean id="dataSource_security_hsqldb"
+	<bean id="dataSource_spring"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${db.driver}" />
 		<property name="url" value="${db.url}" />
