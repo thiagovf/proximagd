@@ -17,24 +17,17 @@
 		<property name="dataSource" ref="dataSource_security_hsqldb" />
 		<property name="packagesToScan" value="br.com.equipejr.entity" />
 	</bean>
-	<!-- <bean id="DataSourceConfigProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
-		<property name="location" value="file:/etc/config/sibepg/data-source.properties" 
-		/> <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" 
-		/> <property name="ignoreUnresolvablePlaceholders" value="true" /> <property 
-		name="order" value="3" /> </bean> -->
+
+	<bean id="DataSourceConfigProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="/WEB-INF/data-source.properties" />
+	</bean>
 
 	<bean id="dataSource_security_hsqldb"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.3.73.2:3306/proximagrade" />
-		<property name="username" value="admintZ3itBW" />
-		<property name="password" value="ElUiYVKW1z1r" />
+		<property name="driverClassName" value="${db.driver}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
 	</bean>
-	<!-- <bean id="dataSource_security_hsqldb"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-		<property name="url" value="jdbc:hsqldb:hsql://localhost/pgrd" />
-		<property name="username" value="sa" />
-		<property name="password" value="" />
-	</bean>-->
 </beans>
