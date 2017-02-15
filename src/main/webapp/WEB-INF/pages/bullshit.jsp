@@ -25,28 +25,26 @@
 			<jsp:include page="header.jsp" />
 			<div class="panel-body" align="center">
 				<div class="container " style="margin-top: 10%; margin-bottom: 10%;">
-					<div class="col-xs-12 col-lg-12">
-						<div class="col-lg-8">
-							<div>
-								<h3 align="left">Galera que nunca nem prometeu grade.</h3>
-								<h4>Lamentável</h4>
-							</div>
-							<div class="table-responsive" style="min-width: 100px;">
-								<table class="table">
-									<thead>
+					<div class="col-lg-8 col-sm-8">
+						<div>
+							<h3 align="left">Galera que nunca nem prometeu grade.</h3>
+							<h5>Lamentável</h5>
+						</div>
+						<div class="table-responsive col-lg-4 col-sm-4">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Os Suvinos</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${allNeverPromised}" var="neverPromised">
 										<tr>
-											<th>Lista de Eunucos</th>
+											<td>${neverPromised}</td>
 										</tr>
-									</thead>
-									<tbody>
-										<c:forEach items="${allNeverPromised}" var="neverPromised">
-											<tr>
-												<td>${neverPromised}</td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
