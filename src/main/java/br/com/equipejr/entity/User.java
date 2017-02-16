@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -37,6 +38,9 @@ public class User {
 	
 	@OneToOne(fetch=FetchType.LAZY)
 	private Role role;
+	
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "werePresent")
+	private List<NextBeer> iGone;
 
 	@Override
 	public String toString() {
@@ -98,6 +102,14 @@ public class User {
 
 	public Long getId() {
 		return id;
+	}
+
+	public List<NextBeer> getiGone() {
+		return iGone;
+	}
+
+	public void setiGone(List<NextBeer> iGone) {
+		this.iGone = iGone;
 	}
 
 }

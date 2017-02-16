@@ -97,19 +97,19 @@ function saveTheDate(id) {
 											<tbody>
 												<c:forEach items="${allNextBeers}" var="nextBeer">
 													<tr>
-														<td>${nextBeer.payer.name}</td>
+														<td><a href="oldbeer?id=${nextBeer.id}">${nextBeer.payer.name}</a></td>
 														<fmt:formatDate value="${nextBeer.date.time}"
 															pattern="dd/MM/yyyy" var="date" />
-														<td class="hidden-xs hidden-sm">${date}</td>
-														<td class="hidden-xs hidden-sm">${nextBeer.motivation}</td>
+														<td class="hidden-xs hidden-sm"><a href="oldbeer?id=${nextBeer.id}">${date}</a></td>
+														<td class="hidden-xs hidden-sm"><a href="oldbeer?id=${nextBeer.id}">${nextBeer.motivation}</a></td>
 														<c:choose>
 															<c:when test="${not empty nextBeer.dateToPay}">
 																<fmt:formatDate value="${nextBeer.dateToPay.time}"
 																	pattern="dd/MM/yyyy HH:mm" var="dateToPay" />
-																<td>${dateToPay}</td>
+																<td><a href="oldbeer?id=${nextBeer.id}">${dateToPay}</a></td>
 															</c:when>
 															<c:otherwise>
-																<td style="color: red;">Data não definida.</td>
+																<td><a href="oldbeer?id=${nextBeer.id}" style="color: red;">Data não definida.</a></td>
 															</c:otherwise>
 														</c:choose>
 														<td><c:choose>

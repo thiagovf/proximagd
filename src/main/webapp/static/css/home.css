@@ -1,4 +1,9 @@
-.float-box {
-	float:right;
-	padding:200px;
+td a {
+    display:block;
+    width: 100%;
+    color: black;
+}
+
+td a:link {
+    text-decoration: none;
 }
