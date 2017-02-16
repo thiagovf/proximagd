@@ -1,6 +1,7 @@
 package br.com.equipejr.dao.impl;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -92,10 +93,11 @@ public class NextBeerDAOImpl implements NextBeerDAO {
 
 		StringBuilder queryStr = new StringBuilder();
 		queryStr.append(" select n from NextBeer as n ");
-		queryStr.append(" where n.dateToPay is not null ");
+		queryStr.append(" where n.dateToPay is not null and n.dateToPay > :now");
 		queryStr.append(" order by n.dateToPay ");
 
 		Query query = sessionFactory.getCurrentSession().createQuery(queryStr.toString());
+		query.setTimestamp("now", new Date());
 
 		List<NextBeer> listNextBeers = query.list();
 		if (listNextBeers != null && !listNextBeers.isEmpty()) {

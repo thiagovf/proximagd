@@ -37,7 +37,13 @@ public class User {
 	
 	@OneToOne(fetch=FetchType.LAZY)
 	private Role role;
-	
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", enabled="
+				+ enabled + ", nextBeers=" + nextBeers + ", role=" + role + "]";
+	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
